@@ -86,6 +86,4 @@ Formularios de Login/Registro flotantes con inputs estilo "Clean" y validación 
 
 Para modificar los colores principales, edita las variables CSS en `scss/piruflix.scss`:
 
-:root { --piru-bg: #ffffff; /\* Fondo Claro \*/ --piru-text: #1d1d1f; /\* Texto Principal \*/ --piru-accent: #E50914; /\* Color de Marca (Rojo) \*/ --piru-surface: #f5f5f7; /\* Color de Tarjetas/Inputs \*/ } \[data-theme="dark"\] { --piru-bg: #000000; /\* Fondo Oscuro \*/ --piru-text: #f5f5f7; /\* Texto Claro \*/ --piru-surface: #1c1c1e; /\* Superficie Oscura (Apple Dark) \*/ }
-
 **Nota:** Este proyecto utiliza `localStorage` para recordar la preferencia de tema (Oscuro/Claro) del usuario automáticamente.
