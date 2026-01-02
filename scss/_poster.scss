@@ -1,0 +1,162 @@
+// =========================================
+// COMPONENTE TARJETA (PIRU POSTER)
+// =========================================
+.piru-poster {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: relative;
+  width: 100%; // Se adapta a la .col de Bootstrap
+  cursor: pointer;
+
+  // --- 1. Contenedor de Imagen (Media) ---
+  .piru-poster-media {
+    position: relative;
+    width: 100%;
+    // Mantiene proporción de poster cine (2 ancho / 3 alto)
+    aspect-ratio: 2 / 3;
+    border-radius: 12px; // Bordes suaves
+    overflow: hidden; // Recorta la imagen al hacer zoom
+    background-color: var(--piru-surface); // Fondo mientras carga
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+
+    // Imagen
+    .piru-poster-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    // Etiquetas (Badges: 4K, HD, Peli)
+    .piru-poster-badges {
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      z-index: 2;
+
+      span {
+        font-size: 0.6rem;
+        font-weight: 700;
+        padding: 3px 6px;
+        border-radius: 4px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        backdrop-filter: blur(4px);
+      }
+
+      .piru-badge-quality {
+        background: rgba(229, 9, 20, 0.9); // Rojo marca
+        color: white;
+      }
+
+      .piru-badge-type {
+        background: rgba(0, 0, 0, 0.6);
+        color: white;
+      }
+    }
+
+    // Overlay Hover + Botón Play
+    .piru-poster-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.2); // Sombreado leve
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0; // Invisible por defecto
+      transition: opacity 0.3s ease;
+      z-index: 3;
+
+      .piru-play-btn {
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.6);
+        backdrop-filter: blur(5px);
+        color: white;
+        font-size: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transform: scale(0.8);
+        transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.2s;
+
+        i {
+          margin-left: 2px;
+        }
+
+        // Corrección visual óptica
+      }
+    }
+  }
+
+  // --- 2. Información (Título, Rating) ---
+  .piru-poster-info {
+    padding: 0 2px; // Pequeño margen interno visual
+
+    .piru-poster-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin: 0 0 4px 0;
+      color: var(--piru-text);
+
+      // Truncar texto largo con "..."
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      transition: color 0.2s;
+    }
+
+    .piru-poster-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between; // Separa rating y año
+      font-size: 0.75rem;
+      color: var(--piru-text);
+      opacity: 0.6;
+
+      .piru-rating {
+        color: #ffb400; // Amarillo Star
+        display: flex;
+        align-items: center;
+        gap: 4px;
+      }
+    }
+  }
+
+  // --- 3. Efectos Hover ---
+  &:hover {
+    .piru-poster-media {
+      transform: translateY(-5px); // Levanta un poco
+      box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15); // Sombra más profunda
+
+      .piru-poster-img {
+        transform: scale(1.08); // Zoom in
+      }
+
+      .piru-poster-overlay {
+        opacity: 1; // Aparece overlay
+
+        .piru-play-btn {
+          transform: scale(1); // Botón crece
+          background: var(--piru-accent); // Se pone rojo
+          border-color: var(--piru-accent);
+        }
+      }
+    }
+
+    .piru-poster-title {
+      color: var(--piru-accent); // Título se ilumina
+    }
+  }
+}

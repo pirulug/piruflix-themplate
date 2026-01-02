@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PiruFlix</title>
+
+  <link rel="stylesheet" href="css/piruflix.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+
+  <div class="piru-wrapper">
+
+    <nav class="piru-navbar">
+      <div class="piru-nav-container">
+
+        <div class="piru-brand">
+          <a href="index.html">
+            <img src="https://placehold.co/600x200" alt="PiruFlix Logo">
+          </a>
+        </div>
+
+        <div class="piru-navbar-mobile-controls">
+
+          <button class="piru-mobile-btn" id="mobile-search-trigger">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+
+          <button class="piru-mobile-btn" id="mobile-theme-toggle">
+            <i class="fa-solid fa-moon"></i>
+          </button>
+
+          <button class="piru-mobile-toggle" id="mobile-menu-trigger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+
+        <div class="piru-menu-wrapper" id="piru-menu">
+
+          <button class="piru-close-menu" id="close-menu">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+
+          <ul class="piru-nav">
+            <li class="piru-nav-item">
+              <a class="piru-nav-link active" href="index.html">Inicio</a>
+            </li>
+            <li class="piru-nav-item">
+              <a class="piru-nav-link" href="movie.html">Películas</a>
+            </li>
+            <li class="piru-nav-item">
+              <a class="piru-nav-link" href="serie.html">Series</a>
+            </li>
+            <li class="piru-nav-item">
+              <a class="piru-nav-link" href="mylist.html">Mi Lista</a>
+            </li>
+          </ul>
+
+          <div class="piru-actions">
+
+            <div class="piru-search-group desktop-only">
+              <form action="" method="get">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input class="piru-input" name="search" placeholder="Buscar título...">
+              </form>
+            </div>
+
+            <button class="piru-btn-theme desktop-only" id="desktop-theme-toggle">
+              <i class="fa-solid fa-moon"></i>
+            </button>
+
+            <div class="piru-nav-user">
+              <a href="register.html" class="piru-user-link">
+                <i class="fa-solid fa-user-plus"></i>
+                <span>Registrarse</span>
+              </a>
+              <a href="login.html" class="piru-user-link highlight">
+                <i class="fa-solid fa-right-to-bracket"></i>
+                <span>Ingresar</span>
+              </a>
+              <a href="profile.html" class="piru-user-avatar">
+                <img src="https://ui-avatars.com/api/?name=John+Doe" alt="Perfil">
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="piru-mobile-search-bar" id="mobile-search-bar">
+          <input type="text" placeholder="¿Qué quieres ver hoy?" class="piru-mobile-input">
+          <button class="piru-search-close" id="close-search">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
+        <div class="piru-overlay" id="piru-overlay"></div>
+
+      </div>
+    </nav>
+
+    <main class="piru-main-content">
+
+      <div class="piru-detail-wrapper">
+
+        <div class="piru-detail-header">
+
+          <div class="piru-backdrop-layer">
+            <img src="img/b1.webp" alt="Backdrop">
+            <div class="backdrop-gradient"></div>
+          </div>
+
+          <div class="container position-relative z-2">
+            <a href="index.html" class="piru-back-link">
+              <i class="fa-solid fa-chevron-left"></i> Volver
+            </a>
+
+            <div class="row mt-4">
+              <div class="col-md-4 col-lg-3 mb-4 mb-md-0">
+                <div class="piru-poster-large">
+                  <img src="img/p1.webp" alt="Poster Ad Astra">
+                </div>
+              </div>
+
+              <div class="col-md-8 col-lg-9 pt-lg-4">
+                <h1 class="piru-detail-title">Ad Astra: Hacia las Estrellas</h1>
+
+                <div class="piru-detail-meta">
+                  <span class="rating-badge"><i class="fa-solid fa-star"></i> 6.5</span>
+                  <span class="meta-item">2019</span>
+                  <span class="meta-item border-box">PG-13</span>
+                  <span class="meta-item">2h 3m</span>
+                  <span class="meta-item quality">4K UHD</span>
+                </div>
+
+                <div class="piru-detail-actions">
+                  <button class="piru-btn piru-btn-primary icon-lg">
+                    <i class="fa-solid fa-play"></i> Reproducir
+                  </button>
+                  <button class="piru-btn piru-btn-glass">
+                    <i class="fa-solid fa-plus"></i> Mi Lista
+                  </button>
+
+                  <div class="action-divider"></div>
+
+                  <button class="piru-btn-circle" title="Me gusta">
+                    <i class="fa-regular fa-thumbs-up"></i>
+                  </button>
+                  <button class="piru-btn-circle" title="Compartir">
+                    <i class="fa-solid fa-share-nodes"></i>
+                  </button>
+                </div>
+
+                <div class="row mt-5">
+                  <div class="col-lg-8">
+                    <h4 class="piru-subtitle">Sinopsis</h4>
+                    <p class="piru-text-body">
+                      El astronauta Roy McBride viaja a los límites exteriores del sistema solar para encontrar a su
+                      padre desaparecido y desentrañar un misterio que amenaza la supervivencia de nuestro planeta. Su
+                      viaje desvelará secretos que desafían la naturaleza de la existencia humana.
+                    </p>
+                  </div>
+                  <div class="col-lg-4">
+                    <div class="piru-credits-box">
+                      <div class="credit-item">
+                        <small>Director</small>
+                        <span>James Gray</span>
+                      </div>
+                      <div class="credit-item">
+                        <small>Elenco</small>
+                        <span>Brad Pitt, Tommy Lee Jones</span>
+                      </div>
+                      <div class="credit-item">
+                        <small>Géneros</small>
+                        <div class="genre-tags">
+                          <span>Sci-Fi</span>
+                          <span>Drama</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="container py-5">
+
+          <div class="row mb-5">
+            <div class="col-12">
+              <h3 class="piru-section-title">Trailer Oficial</h3>
+              <div class="piru-video-container">
+                <iframe src="https://www.youtube.com/embed/P6AaSMfXHbA?modestbranding=1&rel=0" title="Trailer"
+                  allowfullscreen></iframe>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-8">
+              <div class="d-flex justify-content-between align-items-center mb-4">
+                <h3 class="piru-section-title mb-0">Reseñas</h3>
+                <span class="piru-counter">2 Comentarios</span>
+              </div>
+
+              <div class="piru-review-form">
+                <h5 class="form-title">¿Qué te pareció?</h5>
+                <form>
+                  <div class="rating-input-group">
+                    <label>Tu calificación:</label>
+                    <div class="star-rating-select">
+                      <i class="fa-solid fa-star active"></i>
+                      <i class="fa-solid fa-star active"></i>
+                      <i class="fa-solid fa-star active"></i>
+                      <i class="fa-solid fa-star active"></i>
+                      <i class="fa-regular fa-star"></i>
+                    </div>
+                  </div>
+
+                  <textarea class="piru-textarea" rows="3" placeholder="Escribe tu opinión..."></textarea>
+
+                  <div class="text-end mt-3">
+                    <button type="button" class="btn btn-primary">Publicar</button>
+                  </div>
+                </form>
+              </div>
+
+              <div class="piru-review-list">
+                <div class="piru-review-item">
+                  <div class="review-header">
+                    <div class="user-info">
+                      <img src="https://ui-avatars.com/api/?name=Laura+M&background=random" alt="User">
+                      <div>
+                        <h6>Laura Martínez</h6>
+                        <small>Hace 2 días</small>
+                      </div>
+                    </div>
+                    <span class="review-score"><i class="fa-solid fa-star"></i> 4.0</span>
+                  </div>
+                  <p class="review-body">Visualmente impresionante. La actuación de Brad Pitt es sutil pero poderosa.
+                  </p>
+                </div>
+
+                <div class="piru-review-item">
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-4 mt-5 mt-lg-0">
+              <div class="ps-lg-4">
+                <h3 class="piru-section-title">Similares</h3>
+
+                <div class="piru-similar-list">
+                  <a href="#" class="similar-card">
+                    <img src="img/p1.webp" alt="Poster">
+                    <div class="info">
+                      <h6>Avatar: El camino del agua</h6>
+                      <div class="meta">
+                        <small>2022 • Sci-Fi</small>
+                        <span class="score">7.6</span>
+                      </div>
+                    </div>
+                    <i class="fa-solid fa-chevron-right arrow"></i>
+                  </a>
+
+                  <a href="#" class="similar-card">
+                    <img src="img/p1.webp" alt="Poster">
+                    <div class="info">
+                      <h6>Interstellar</h6>
+                      <div class="meta">
+                        <small>2014 • Sci-Fi</small>
+                        <span class="score">8.7</span>
+                      </div>
+                    </div>
+                    <i class="fa-solid fa-chevron-right arrow"></i>
+                  </a>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </main>
+
+    <footer class="piru-footer">
+      <div class="piru-footer-content">
+        <p>&copy; 2026 PiruFlix. Todos los derechos reservados.</p>
+        <div class="piru-socials">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="js/bootstrap.js"></script>
+  <script src="js/piruflix.js"></script>
+</body>
+
+</html>

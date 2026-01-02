@@ -1,0 +1,503 @@
+// =========================================
+// 1. VARIABLES Y TOKENS DE DISEÑO
+// =========================================
+:root {
+  // --- Paleta Base (Tema Claro) ---
+  --piru-bg: #ffffff;
+  --piru-text: #1d1d1f;           // Negro suave (Estilo Apple)
+  --piru-surface: #f5f5f7;        // Gris muy claro para inputs/fondos
+  --piru-surface-hover: #e8e8ed;  // Gris un poco más oscuro para hover
+  --piru-accent: #E50914;         // Rojo marca (Netflix Style)
+  
+  // --- Efectos ---
+  --piru-glass: rgba(255, 255, 255, 0.85);
+  --piru-border-color: rgba(0, 0, 0, 0.1);
+  --piru-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  
+  // --- Dimensiones ---
+  --nav-height: 70px;
+}
+
+// --- Paleta Tema Oscuro (Data Attribute) ---
+[data-theme="dark"] {
+  --piru-bg: #000000;
+  --piru-text: #f5f5f7;
+  --piru-surface: #1c1c1e;        // Gris oscuro (Estilo iOS Dark)
+  --piru-surface-hover: #2c2c2e;
+  --piru-glass: rgba(20, 20, 20, 0.85);
+  --piru-border-color: rgba(255, 255, 255, 0.15);
+  --piru-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+// =========================================
+// 2. LAYOUT BASE (Encapsulado en .piru-wrapper)
+// =========================================
+.piru-wrapper {
+  // Aplicamos fuentes y colores aquí para no afectar al body global
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--piru-bg);
+  color: var(--piru-text);
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column; // Para empujar el footer
+  position: relative;
+  transition: background-color 0.3s ease, color 0.3s ease;
+
+  // Reset local de listas y links
+  ul { list-style: none; padding: 0; margin: 0; }
+  a { text-decoration: none; color: inherit; }
+}
+
+// =========================================
+// 3. NAVBAR COMPONENT
+// =========================================
+.piru-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--nav-height);
+  z-index: 1000;
+  
+  // Glassmorphism
+  background: var(--piru-glass);
+  backdrop-filter: blur(20px); 
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--piru-border-color);
+
+  .piru-nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative; // Importante para la barra de búsqueda móvil
+  }
+}
+
+// --- Marca / Logo ---
+.piru-brand {
+  z-index: 1002; // Por encima de todo
+  display: flex;
+  align-items: center;
+
+  img {
+    height: 35px; // Ajusta según tu logo
+    width: auto;
+    display: block;
+  }
+}
+
+// =========================================
+// 4. CONTROLES MÓVILES (Header Icons)
+// =========================================
+.piru-navbar-mobile-controls {
+  display: none; // Oculto por defecto en escritorio
+  align-items: center;
+  gap: 10px;
+  z-index: 1002;
+
+  // Botones Lupa y Tema (Móvil)
+  .piru-mobile-btn {
+    background: none;
+    border: none;
+    color: var(--piru-text);
+    font-size: 1.2rem;
+    padding: 8px;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background-color 0.2s;
+
+    &:hover { background-color: var(--piru-surface); }
+  }
+
+  // Hamburguesa (Menu Trigger)
+  .piru-mobile-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 8px;
+
+    span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background-color: var(--piru-text);
+      border-radius: 2px;
+      transition: 0.3s;
+    }
+  }
+}
+
+// =========================================
+// 5. BARRA DE BÚSQUEDA MÓVIL (Expandible)
+// =========================================
+.piru-mobile-search-bar {
+  position: absolute;
+  top: 100%; // Justo debajo del navbar
+  left: 0;
+  width: 100%;
+  background: var(--piru-bg); // Fondo sólido para tapar contenido
+  padding: 15px 20px;
+  border-bottom: 1px solid var(--piru-border-color);
+  box-shadow: var(--piru-shadow);
+  z-index: 900;
+  
+  // Estado inicial oculto
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transform: translateY(-20px);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+
+  &.active {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .piru-mobile-input {
+    flex-grow: 1;
+    background: var(--piru-surface);
+    border: none;
+    border-radius: 8px;
+    padding: 10px 15px;
+    font-size: 1rem;
+    color: var(--piru-text);
+    outline: none;
+
+    &::placeholder { opacity: 0.6; }
+  }
+
+  .piru-search-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--piru-text);
+    cursor: pointer;
+    padding: 0 5px;
+  }
+}
+
+// =========================================
+// 6. MENÚ PRINCIPAL Y OFFCANVAS
+// =========================================
+.piru-menu-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  flex-grow: 1;
+  justify-content: space-between;
+  margin-left: 40px;
+
+  // Botón cerrar (Solo móvil)
+  .piru-close-menu { display: none; }
+}
+
+// --- Links de Navegación ---
+.piru-nav {
+  display: flex;
+  gap: 20px;
+
+  .piru-nav-link {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--piru-text);
+    opacity: 0.7;
+    transition: all 0.2s ease;
+    
+    &:hover, &.active {
+      opacity: 1;
+      color: var(--piru-accent);
+    }
+  }
+}
+
+// --- Área de Acciones (Derecha) ---
+.piru-actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+// Buscador Desktop
+.piru-search-group {
+  position: relative;
+  
+  i {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.8rem;
+    color: var(--piru-text);
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  .piru-input {
+    background: var(--piru-surface);
+    border: none;
+    border-radius: 8px;
+    padding: 8px 10px 8px 30px;
+    color: var(--piru-text);
+    font-size: 0.9rem;
+    width: 200px;
+    transition: width 0.3s ease, background 0.3s;
+    font-family: inherit;
+
+    &:focus {
+      outline: none;
+      width: 240px;
+      background: var(--piru-surface-hover);
+    }
+  }
+}
+
+// Botón Tema Desktop
+.piru-btn-theme {
+  background: none;
+  border: none;
+  color: var(--piru-text);
+  cursor: pointer;
+  font-size: 1.1rem;
+  padding: 6px;
+  border-radius: 50%;
+  transition: background 0.2s;
+
+  &:hover { background: var(--piru-surface); }
+}
+
+// --- Usuario / Login / Registro ---
+.piru-nav-user {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-left: 10px;
+
+  .piru-user-link {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--piru-text);
+    opacity: 0.8;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: 0.2s;
+
+    &:hover { opacity: 1; color: var(--piru-accent); }
+
+    // Estilo "Pill" para Iniciar Sesión
+    &.highlight {
+      background-color: var(--piru-surface);
+      padding: 6px 14px;
+      border-radius: 20px;
+      opacity: 1;
+      
+      &:hover { background-color: var(--piru-surface-hover); }
+    }
+  }
+  
+  .piru-user-avatar img {
+    width: 35px; height: 35px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--piru-surface);
+  }
+}
+
+// =========================================
+// 7. RESPONSIVE Y MEDIA QUERIES (Mobile < 992px)
+// =========================================
+@media (max-width: 991px) {
+  
+  // 1. Mostrar Controles Móviles
+  .piru-navbar-mobile-controls { display: flex; }
+
+  // 2. Ocultar elementos exclusivos de Desktop
+  .desktop-only { display: none !important; }
+
+  // 3. Estilo Offcanvas del Menú
+  .piru-menu-wrapper {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 280px;
+    height: 100vh;
+    background-color: var(--piru-bg);
+    
+    // Layout vertical
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 80px 20px 20px; // Padding top para espacio de cerrar
+    margin: 0;
+    z-index: 9999;
+    
+    // Animación Slide In
+    transform: translateX(100%);
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: -5px 0 30px rgba(0,0,0,0.2);
+
+    &.active { transform: translateX(0); }
+
+    // Botón Cerrar (X)
+    .piru-close-menu {
+      display: block;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: var(--piru-text);
+      cursor: pointer;
+    }
+
+    // Links verticales
+    .piru-nav {
+      flex-direction: column;
+      width: 100%;
+      gap: 0;
+      
+      .piru-nav-item { border-bottom: 1px solid var(--piru-border-color); }
+
+      .piru-nav-link {
+        display: block;
+        padding: 15px 0;
+        font-size: 1.1rem;
+      }
+    }
+
+    // Acciones en Menú Móvil (Solo User Links)
+    .piru-actions {
+      flex-direction: column;
+      width: 100%;
+      margin-top: 20px;
+      align-items: flex-start;
+
+      .piru-nav-user {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        margin: 0;
+        gap: 0;
+
+        .piru-user-link {
+          width: 100%;
+          padding: 12px 0;
+          font-size: 1rem;
+          border-bottom: 1px solid var(--piru-border-color);
+
+          &.highlight {
+            background: none;
+            padding: 12px 0;
+            border-radius: 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Overlay (Fondo oscuro al abrir menú)
+.piru-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(4px);
+  z-index: 998;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.3s ease;
+
+  &.active { opacity: 1; visibility: visible; }
+}
+
+// =========================================
+// 8. CONTENIDO PRINCIPAL Y FOOTER
+// =========================================
+.piru-main-content {
+  padding-top: var(--nav-height); // Compensar navbar fijo
+  flex: 1; // Ocupa espacio disponible para empujar footer
+}
+
+// Hero Section (Ejemplo)
+.piru-hero-section {
+  position: relative;
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: linear-gradient(135deg, #101014 0%, #25252b 100%);
+  color: #fff;
+  padding: 0 20px;
+
+  .piru-hero-content {
+    h1 { font-size: 2.5rem; margin-bottom: 1rem; font-weight: 800; }
+    p { font-size: 1.1rem; opacity: 0.8; margin-bottom: 2rem; }
+    
+    .piru-hero-button {
+      display: inline-block;
+      padding: 12px 30px;
+      background-color: var(--piru-accent);
+      color: white;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: transform 0.2s;
+      &:hover { transform: scale(1.05); }
+    }
+  }
+}
+
+// Sección Destacados
+.piru-featured-section {
+  padding: 40px 0;
+  .piru-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  h2 { font-weight: 700; margin-bottom: 20px; }
+}
+
+// Footer
+.piru-footer {
+  margin-top: auto;
+  padding: 40px 20px;
+  background-color: var(--piru-surface);
+  border-top: 1px solid var(--piru-border-color);
+  
+  .piru-footer-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    text-align: center;
+    
+    p { margin: 0; font-size: 0.85rem; opacity: 0.6; }
+    
+    .piru-socials {
+      display: flex;
+      gap: 20px;
+      a {
+        font-size: 1.2rem;
+        opacity: 0.5;
+        transition: 0.2s;
+        &:hover { opacity: 1; color: var(--piru-accent); }
+      }
+    }
+  }
+}

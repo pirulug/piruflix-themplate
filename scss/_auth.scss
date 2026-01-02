@@ -1,0 +1,316 @@
+// =========================================
+// PÁGINAS DE AUTENTICACIÓN (Login/Register)
+// =========================================
+
+.piru-auth-section {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  overflow: hidden;
+
+  // 1. Fondo Inmersivo
+  .piru-auth-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .bg-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      // Degradado oscuro fuerte para que el formulario resalte
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(8px); // Desenfoca la imagen de fondo (Estilo Apple)
+    }
+  }
+
+  // 2. Tarjeta Central
+  .piru-auth-card {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 450px; // Ancho máximo elegante
+    background: var(--piru-bg); // Usa el color base de tu tema (blanco o negro)
+    border-radius: 24px; // Bordes muy redondeados
+    padding: 40px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3); // Sombra profunda
+    border: 1px solid var(--piru-border-color);
+
+    // Animación de entrada suave
+    animation: fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+
+    // En modo Dark, hacemos la tarjeta un poco transparente
+    [data-theme="dark"] & {
+      background: rgba(28, 28, 30, 0.8); // Gris oscuro translúcido
+      backdrop-filter: blur(20px);
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+  }
+
+  // Header (Logo y Títulos)
+  .auth-header {
+    text-align: center;
+    margin-bottom: 30px;
+
+    .auth-logo {
+      height: 40px;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin-bottom: 5px;
+      color: var(--piru-text);
+    }
+
+    p {
+      color: var(--piru-text);
+      opacity: 0.6;
+      font-size: 0.95rem;
+    }
+  }
+
+  // 3. Inputs y Labels
+  .piru-form-group {
+    margin-bottom: 20px;
+
+    label {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--piru-text);
+      opacity: 0.9;
+    }
+
+    .input-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+
+      // Icono a la izquierda
+      .input-icon {
+        position: absolute;
+        left: 15px;
+        color: var(--piru-text);
+        opacity: 0.4;
+        font-size: 1rem;
+        pointer-events: none;
+        transition: color 0.3s;
+      }
+
+      // El Input Real
+      input {
+        width: 100%;
+        padding: 12px 15px 12px 45px; // Padding izquierdo para el icono
+        border-radius: 12px;
+        border: 2px solid transparent; // Borde invisible por defecto
+        background-color: var(--piru-surface); // Fondo gris suave
+        color: var(--piru-text);
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        outline: none;
+
+        &::placeholder {
+          color: var(--piru-text);
+          opacity: 0.3;
+        }
+
+        // Estado Focus (Estilo iOS)
+        &:focus {
+          background-color: var(--piru-bg);
+          border-color: var(--piru-accent); // Borde rojo/brand al enfocar
+          box-shadow: 0 0 0 4px rgba(229, 9, 20, 0.1); // Halo suave
+        }
+
+        // Al enfocar el input, iluminamos el icono
+        &:focus+.input-icon,
+        // (Si el icono estuviera después)
+        &:focus~.input-icon {
+          // (Esto no aplica por orden HTML, usamos selector css hermano adyacente inverso o JS, pero visualmente el input border basta)
+        }
+      }
+
+      // Iluminar icono al focus (truco: :focus-within en el padre wrapper)
+      &:focus-within .input-icon {
+        color: var(--piru-accent);
+        opacity: 1;
+      }
+
+      // Ojo ver password
+      .toggle-password {
+        position: absolute;
+        right: 15px;
+        background: none;
+        border: none;
+        color: var(--piru-text);
+        opacity: 0.4;
+        cursor: pointer;
+
+        &:hover {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  // 4. Botón
+  .piru-btn {
+    width: 100%; // Botón ancho completo
+    padding: 14px;
+    font-size: 1.1rem;
+    margin-top: 10px;
+    border-radius: 12px;
+
+    &.btn-block {
+      display: block;
+    }
+  }
+
+  // 5. Footer
+  .piru-auth-footer {
+    text-align: center;
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid var(--piru-border-color);
+
+    p {
+      margin: 0;
+      color: var(--piru-text);
+      opacity: 0.7;
+      font-size: 0.95rem;
+    }
+
+    a {
+      color: var(--piru-accent);
+      font-weight: 700;
+      text-decoration: none;
+      margin-left: 5px;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+// Keyframes para la entrada
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Media Query Móvil
+@media (max-width: 576px) {
+  .piru-auth-card {
+    padding: 30px 20px; // Menos padding en móvil
+  }
+}
+
+// =========================================
+// ESTILOS ESPECÍFICOS DE LOGIN (Extras)
+// =========================================
+
+.piru-auth-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  font-size: 0.9rem;
+
+  // Enlace Olvidaste pass
+  .forgot-link {
+    color: var(--piru-text);
+    text-decoration: none;
+    opacity: 0.7;
+    transition: 0.2s;
+
+    &:hover {
+      opacity: 1;
+      color: var(--piru-accent);
+      text-decoration: underline;
+    }
+  }
+
+  // Checkbox Personalizado (Estilo Apple/Flat)
+  .custom-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    color: var(--piru-text);
+    opacity: 0.9;
+    user-select: none;
+
+    // Ocultar input nativo feo
+    input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      height: 0;
+      width: 0;
+
+      // Cuando está checked
+      &:checked~.checkmark {
+        background-color: var(--piru-accent);
+        border-color: var(--piru-accent);
+
+        // Mostrar el check
+        &::after {
+          display: block;
+        }
+      }
+    }
+
+    // La cajita visual
+    .checkmark {
+      position: relative;
+      height: 18px;
+      width: 18px;
+      background-color: var(--piru-surface);
+      border: 1px solid var(--piru-border-color);
+      border-radius: 4px;
+      transition: all 0.2s;
+
+      // El tick (palomita) blanca
+      &::after {
+        content: "";
+        position: absolute;
+        display: none; // Oculto por defecto
+        left: 5px;
+        top: 2px;
+        width: 6px;
+        height: 10px;
+        border: solid white;
+        border-width: 0 2px 2px 0;
+        transform: rotate(45deg);
+      }
+    }
+
+    &:hover .checkmark {
+      border-color: var(--piru-accent);
+    }
+  }
+}

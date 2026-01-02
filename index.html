@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PiruFlix</title>
+
+  <link rel="stylesheet" href="css/piruflix.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+  <div class="piru-wrapper">
+
+    <nav class="piru-navbar">
+      <div class="piru-nav-container">
+
+        <div class="piru-brand">
+          <a href="index.html">
+            <img src="https://placehold.co/600x200" alt="PiruFlix Logo">
+          </a>
+        </div>
+
+        <div class="piru-navbar-mobile-controls">
+
+          <button class="piru-mobile-btn" id="mobile-search-trigger">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+
+          <button class="piru-mobile-btn" id="mobile-theme-toggle">
+            <i class="fa-solid fa-moon"></i>
+          </button>
+
+          <button class="piru-mobile-toggle" id="mobile-menu-trigger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+
+        <div class="piru-menu-wrapper" id="piru-menu">
+
+          <button class="piru-close-menu" id="close-menu">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+
+          <ul class="piru-nav">
+            <li class="piru-nav-item">
+              <a class="piru-nav-link active" href="index.html">Inicio</a>
+            </li>
+            <li class="piru-nav-item">
+              <a class="piru-nav-link" href="movie.html">Películas</a>
+            </li>
+            <li class="piru-nav-item">
+              <a class="piru-nav-link" href="serie.html">Series</a>
+            </li>
+            <li class="piru-nav-item">
+              <a class="piru-nav-link" href="mylist.html">Mi Lista</a>
+            </li>
+          </ul>
+
+          <div class="piru-actions">
+
+            <div class="piru-search-group desktop-only">
+              <form action="" method="get">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input class="piru-input" name="search" placeholder="Buscar título...">
+              </form>
+            </div>
+
+            <button class="piru-btn-theme desktop-only" id="desktop-theme-toggle">
+              <i class="fa-solid fa-moon"></i>
+            </button>
+
+            <div class="piru-nav-user">
+              <a href="register.html" class="piru-user-link">
+                <i class="fa-solid fa-user-plus"></i>
+                <span>Registrarse</span>
+              </a>
+              <a href="login.html" class="piru-user-link highlight">
+                <i class="fa-solid fa-right-to-bracket"></i>
+                <span>Ingresar</span>
+              </a>
+              <a href="profile.html" class="piru-user-avatar">
+                <img src="https://ui-avatars.com/api/?name=John+Doe" alt="Perfil">
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="piru-mobile-search-bar" id="mobile-search-bar">
+          <input type="text" placeholder="¿Qué quieres ver hoy?" class="piru-mobile-input">
+          <button class="piru-search-close" id="close-search">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
+        <div class="piru-overlay" id="piru-overlay"></div>
+
+      </div>
+    </nav>
+
+    <main class="piru-main-content">
+
+      <div id="heroCarousel" class="carousel slide piru-hero-carousel" data-bs-ride="carousel">
+
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
+          <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+        </div>
+
+        <div class="carousel-inner">
+
+          <div class="carousel-item active">
+            <div class="piru-hero-backdrop">
+              <img src="img/b1.webp" alt="The Witcher Banner">
+              <div class="piru-hero-gradient"></div>
+            </div>
+
+            <div class="piru-hero-content">
+              <div class="piru-container">
+                <span class="piru-badge-hero">Nº 1 en Tendencias</span>
+
+                <h1 class="piru-hero-title">The Witcher</h1>
+
+                <div class="piru-hero-meta">
+                  <span class="match">98% Coincidencia</span>
+                  <span class="year">2023</span>
+                  <span class="age">16+</span>
+                  <span class="seasons">3 Temporadas</span>
+                  <span class="badge-hd">4K Ultra HD</span>
+                </div>
+
+                <p class="piru-hero-desc">
+                  Geralt de Rivia, un cazador de monstruos mutante, viaja en pos de su destino por un mundo turbulento
+                  en el que, a menudo, los humanos son peores que las bestias.
+                </p>
+
+                <div class="piru-hero-buttons">
+                  <button class="piru-btn piru-btn-play">
+                    <i class="fa-solid fa-play"></i> Reproducir
+                  </button>
+                  <button class="piru-btn piru-btn-info">
+                    <i class="fa-solid fa-circle-info"></i> Más Info
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-item">
+            <div class="piru-hero-backdrop">
+              <img src="img/b2.webp" alt="Ad Astra Banner">
+              <div class="piru-hero-gradient"></div>
+            </div>
+
+            <div class="piru-hero-content">
+              <div class="piru-container">
+                <span class="piru-badge-hero badge-action">Acción</span>
+
+                <h1 class="piru-hero-title">Ad Astra</h1>
+
+                <div class="piru-hero-meta">
+                  <span class="match">85% Coincidencia</span>
+                  <span class="year">2019</span>
+                  <span class="age">13+</span>
+                  <span class="duration">2h 3m</span>
+                  <span class="badge-hd">HD</span>
+                </div>
+
+                <p class="piru-hero-desc">
+                  El astronauta Roy McBride viaja a los límites exteriores del sistema solar para encontrar a su padre
+                  perdido y desentrañar un misterio que amenaza la supervivencia.
+                </p>
+
+                <div class="piru-hero-buttons">
+                  <button class="piru-btn piru-btn-play">
+                    <i class="fa-solid fa-play"></i> Reproducir
+                  </button>
+                  <button class="piru-btn piru-btn-info">
+                    <i class="fa-solid fa-circle-info"></i> Más Info
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+          <span class="piru-control-icon"><i class="fa-solid fa-chevron-left"></i></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+          <span class="piru-control-icon"><i class="fa-solid fa-chevron-right"></i></span>
+        </button>
+      </div>
+
+      <div class="container my-3">
+
+        <div class="row">
+          <div class="col-lg-8">
+
+            <div class="piru-title">
+              <h4>
+                <span class="highlight">Películas</span> Destacadas
+              </h4>
+
+              <a href="#" class="piru-link-action">
+                Ver todo <i class="fa-solid fa-chevron-right"></i>
+              </a>
+            </div>
+
+            <div class="row g-3">
+              <!-- Poster de ejemplo -->
+              <div class="col-6 col-md-4 col-lg-2">
+                <article class="piru-poster">
+                  <div class="piru-poster-media">
+                    <img src="img/p1.webp" alt="Poster" class="piru-poster-img" loading="lazy">
+
+                    <div class="piru-poster-badges">
+                      <span class="piru-badge-quality">4K</span>
+                      <span class="piru-badge-type">Peli</span>
+                    </div>
+
+                    <div class="piru-poster-overlay">
+                      <button class="piru-play-btn"><i class="fa-solid fa-play"></i></button>
+                    </div>
+                  </div>
+
+                  <div class="piru-poster-info">
+                    <h3 class="piru-poster-title">Deadpool & Wolverine</h3>
+                    <div class="piru-poster-meta">
+                      <span class="piru-rating"><i class="fa-solid fa-star"></i> 8.2</span>
+                      <span class="piru-year">2024</span>
+                    </div>
+                  </div>
+                </article>
+              </div>
+              <!-- Poster de ejemplo -->
+              <div class="col-6 col-md-4 col-lg-2">
+                <article class="piru-poster">
+                  <div class="piru-poster-media">
+                    <img src="img/p1.webp" alt="Poster" class="piru-poster-img" loading="lazy">
+
+                    <div class="piru-poster-badges">
+                      <span class="piru-badge-quality">4K</span>
+                      <span class="piru-badge-type">Peli</span>
+                    </div>
+
+                    <div class="piru-poster-overlay">
+                      <button class="piru-play-btn"><i class="fa-solid fa-play"></i></button>
+                    </div>
+                  </div>
+
+                  <div class="piru-poster-info">
+                    <h3 class="piru-poster-title">Deadpool & Wolverine</h3>
+                    <div class="piru-poster-meta">
+                      <span class="piru-rating"><i class="fa-solid fa-star"></i> 8.2</span>
+                      <span class="piru-year">2024</span>
+                    </div>
+                  </div>
+                </article>
+              </div>
+              <!-- Poster de ejemplo -->
+              <div class="col-6 col-md-4 col-lg-2">
+                <article class="piru-poster">
+                  <div class="piru-poster-media">
+                    <img src="img/p1.webp" alt="Poster" class="piru-poster-img" loading="lazy">
+
+                    <div class="piru-poster-badges">
+                      <span class="piru-badge-quality">4K</span>
+                      <span class="piru-badge-type">Peli</span>
+                    </div>
+
+                    <div class="piru-poster-overlay">
+                      <button class="piru-play-btn"><i class="fa-solid fa-play"></i></button>
+                    </div>
+                  </div>
+
+                  <div class="piru-poster-info">
+                    <h3 class="piru-poster-title">Deadpool & Wolverine</h3>
+                    <div class="piru-poster-meta">
+                      <span class="piru-rating"><i class="fa-solid fa-star"></i> 8.2</span>
+                      <span class="piru-year">2024</span>
+                    </div>
+                  </div>
+                </article>
+              </div>
+              <!-- Poster de ejemplo -->
+              <div class="col-6 col-md-4 col-lg-2">
+                <article class="piru-poster">
+                  <div class="piru-poster-media">
+                    <img src="img/p1.webp" alt="Poster" class="piru-poster-img" loading="lazy">
+
+                    <div class="piru-poster-badges">
+                      <span class="piru-badge-quality">4K</span>
+                      <span class="piru-badge-type">Peli</span>
+                    </div>
+
+                    <div class="piru-poster-overlay">
+                      <button class="piru-play-btn"><i class="fa-solid fa-play"></i></button>
+                    </div>
+                  </div>
+
+                  <div class="piru-poster-info">
+                    <h3 class="piru-poster-title">Deadpool & Wolverine</h3>
+                    <div class="piru-poster-meta">
+                      <span class="piru-rating"><i class="fa-solid fa-star"></i> 8.2</span>
+                      <span class="piru-year">2024</span>
+                    </div>
+                  </div>
+                </article>
+              </div>
+              <!-- Poster de ejemplo -->
+              <div class="col-6 col-md-4 col-lg-2">
+                <article class="piru-poster">
+                  <div class="piru-poster-media">
+                    <img src="img/p1.webp" alt="Poster" class="piru-poster-img" loading="lazy">
+
+                    <div class="piru-poster-badges">
+                      <span class="piru-badge-quality">4K</span>
+                      <span class="piru-badge-type">Peli</span>
+                    </div>
+
+                    <div class="piru-poster-overlay">
+                      <button class="piru-play-btn"><i class="fa-solid fa-play"></i></button>
+                    </div>
+                  </div>
+
+                  <div class="piru-poster-info">
+                    <h3 class="piru-poster-title">Deadpool & Wolverine</h3>
+                    <div class="piru-poster-meta">
+                      <span class="piru-rating"><i class="fa-solid fa-star"></i> 8.2</span>
+                      <span class="piru-year">2024</span>
+                    </div>
+                  </div>
+                </article>
+              </div>
+              <!-- Poster de ejemplo -->
+              <div class="col-6 col-md-4 col-lg-2">
+                <article class="piru-poster">
+                  <div class="piru-poster-media">
+                    <img src="img/p1.webp" alt="Poster" class="piru-poster-img" loading="lazy">
+
+                    <div class="piru-poster-badges">
+                      <span class="piru-badge-quality">4K</span>
+                      <span class="piru-badge-type">Peli</span>
+                    </div>
+
+                    <div class="piru-poster-overlay">
+                      <button class="piru-play-btn"><i class="fa-solid fa-play"></i></button>
+                    </div>
+                  </div>
+
+                  <div class="piru-poster-info">
+                    <h3 class="piru-poster-title">Deadpool & Wolverine</h3>
+                    <div class="piru-poster-meta">
+                      <span class="piru-rating"><i class="fa-solid fa-star"></i> 8.2</span>
+                      <span class="piru-year">2024</span>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </div>
+            <div class="piru-title">
+              <h4>
+                <span class="highlight">Ultimas</span> Peliculas
+              </h4>
+
+              <a href="#" class="piru-link-action">
+                Ver todo <i class="fa-solid fa-chevron-right"></i>
+              </a>
+            </div>
+
+            <div class="row g-3">
+              <!-- Poster de ejemplo -->
+              <div class="col-6 col-md-4 col-lg-2">
+                <article class="piru-poster">
+                  <div class="piru-poster-media">
+                    <img src="img/p1.webp" alt="Poster" class="piru-poster-img" loading="lazy">
+
+                    <div class="piru-poster-badges">
+                      <span class="piru-badge-quality">4K</span>
+                      <span class="piru-badge-type">Peli</span>
+                    </div>
+
+                    <div class="piru-poster-overlay">
+                      <button class="piru-play-btn"><i class="fa-solid fa-play"></i></button>
+                    </div>
+                  </div>
+
+                  <div class="piru-poster-info">
+                    <h3 class="piru-poster-title">Deadpool & Wolverine</h3>
+                    <div class="piru-poster-meta">
+                      <span class="piru-rating"><i class="fa-solid fa-star"></i> 8.2</span>
+                      <span class="piru-year">2024</span>
+                    </div>
+                  </div>
+                </article>
+              </div>
+              <!-- Poster de ejemplo -->
+              <div class="col-6 col-md-4 col-lg-2">
+                <article class="piru-poster">
+                  <div class="piru-poster-media">
+                    <img src="img/p1.webp" alt="Poster" class="piru-poster-img" loading="lazy">
+
+                    <div class="piru-poster-badges">
+                      <span class="piru-badge-quality">4K</span>
+                      <span class="piru-badge-type">Peli</span>
+                    </div>
+
+                    <div class="piru-poster-overlay">
+                      <button class="piru-play-btn"><i class="fa-solid fa-play"></i></button>
+                    </div>
+                  </div>
+
+                  <div class="piru-poster-info">
+                    <h3 class="piru-poster-title">Deadpool & Wolverine</h3>
+                    <div class="piru-poster-meta">
+                      <span class="piru-rating"><i class="fa-solid fa-star"></i> 8.2</span>
+                      <span class="piru-year">2024</span>
+                    </div>
+                  </div>
+                </article>
+              </div>
+              <!-- Poster de ejemplo -->
+              <div class="col-6 col-md-4 col-lg-2">
+                <article class="piru-poster">
+                  <div class="piru-poster-media">
+                    <img src="img/p1.webp" alt="Poster" class="piru-poster-img" loading="lazy">
+
+                    <div class="piru-poster-badges">
+                      <span class="piru-badge-quality">4K</span>
+                      <span class="piru-badge-type">Peli</span>
+                    </div>
+
+                    <div class="piru-poster-overlay">
+                      <button class="piru-play-btn"><i class="fa-solid fa-play"></i></button>
+                    </div>
+                  </div>
+
+                  <div class="piru-poster-info">
+                    <h3 class="piru-poster-title">Deadpool & Wolverine</h3>
+                    <div class="piru-poster-meta">
+                      <span class="piru-rating"><i class="fa-solid fa-star"></i> 8.2</span>
+                      <span class="piru-year">2024</span>
+                    </div>
+                  </div>
+                </article>
+              </div>
+              <!-- Poster de ejemplo -->
+              <div class="col-6 col-md-4 col-lg-2">
+                <article class="piru-poster">
+                  <div class="piru-poster-media">
+                    <img src="img/p1.webp" alt="Poster" class="piru-poster-img" loading="lazy">
+
+                    <div class="piru-poster-badges">
+                      <span class="piru-badge-quality">4K</span>
+                      <span class="piru-badge-type">Peli</span>
+                    </div>
+
+                    <div class="piru-poster-overlay">
+                      <button class="piru-play-btn"><i class="fa-solid fa-play"></i></button>
+                    </div>
+                  </div>
+
+                  <div class="piru-poster-info">
+                    <h3 class="piru-poster-title">Deadpool & Wolverine</h3>
+                    <div class="piru-poster-meta">
+                      <span class="piru-rating"><i class="fa-solid fa-star"></i> 8.2</span>
+                      <span class="piru-year">2024</span>
+                    </div>
+                  </div>
+                </article>
+              </div>
+              <!-- Poster de ejemplo -->
+              <div class="col-6 col-md-4 col-lg-2">
+                <article class="piru-poster">
+                  <div class="piru-poster-media">
+                    <img src="img/p1.webp" alt="Poster" class="piru-poster-img" loading="lazy">
+
+                    <div class="piru-poster-badges">
+                      <span class="piru-badge-quality">4K</span>
+                      <span class="piru-badge-type">Peli</span>
+                    </div>
+
+                    <div class="piru-poster-overlay">
+                      <button class="piru-play-btn"><i class="fa-solid fa-play"></i></button>
+                    </div>
+                  </div>
+
+                  <div class="piru-poster-info">
+                    <h3 class="piru-poster-title">Deadpool & Wolverine</h3>
+                    <div class="piru-poster-meta">
+                      <span class="piru-rating"><i class="fa-solid fa-star"></i> 8.2</span>
+                      <span class="piru-year">2024</span>
+                    </div>
+                  </div>
+                </article>
+              </div>
+              <!-- Poster de ejemplo -->
+              <div class="col-6 col-md-4 col-lg-2">
+                <article class="piru-poster">
+                  <div class="piru-poster-media">
+                    <img src="img/p1.webp" alt="Poster" class="piru-poster-img" loading="lazy">
+
+                    <div class="piru-poster-badges">
+                      <span class="piru-badge-quality">4K</span>
+                      <span class="piru-badge-type">Peli</span>
+                    </div>
+
+                    <div class="piru-poster-overlay">
+                      <button class="piru-play-btn"><i class="fa-solid fa-play"></i></button>
+                    </div>
+                  </div>
+
+                  <div class="piru-poster-info">
+                    <h3 class="piru-poster-title">Deadpool & Wolverine</h3>
+                    <div class="piru-poster-meta">
+                      <span class="piru-rating"><i class="fa-solid fa-star"></i> 8.2</span>
+                      <span class="piru-year">2024</span>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </div>
+            <div class="piru-title">
+              <h4>
+                <span class="highlight">Series</span> Destacadas
+              </h4>
+
+              <a href="#" class="piru-link-action">
+                Ver todo <i class="fa-solid fa-chevron-right"></i>
+              </a>
+            </div>
+
+            <div class="row g-3">
+              <!-- Poster de ejemplo -->
+              <div class="col-6 col-md-4 col-lg-2">
+                <article class="piru-poster">
+                  <div class="piru-poster-media">
+                    <img src="img/p1.webp" alt="Poster" class="piru-poster-img" loading="lazy">
+
+                    <div class="piru-poster-badges">
+                      <span class="piru-badge-quality">4K</span>
+                      <span class="piru-badge-type">Peli</span>
+                    </div>
+
+                    <div class="piru-poster-overlay">
+                      <button class="piru-play-btn"><i class="fa-solid fa-play"></i></button>
+                    </div>
+                  </div>
+
+                  <div class="piru-poster-info">
+                    <h3 class="piru-poster-title">Deadpool & Wolverine</h3>
+                    <div class="piru-poster-meta">
+                      <span class="piru-rating"><i class="fa-solid fa-star"></i> 8.2</span>
+                      <span class="piru-year">2024</span>
+                    </div>
+                  </div>
+                </article>
+              </div>
+              <!-- Poster de ejemplo -->
+              <div class="col-6 col-md-4 col-lg-2">
+                <article class="piru-poster">
+                  <div class="piru-poster-media">
+                    <img src="img/p1.webp" alt="Poster" class="piru-poster-img" loading="lazy">
+
+                    <div class="piru-poster-badges">
+                      <span class="piru-badge-quality">4K</span>
+                      <span class="piru-badge-type">Peli</span>
+                    </div>
+
+                    <div class="piru-poster-overlay">
+                      <button class="piru-play-btn"><i class="fa-solid fa-play"></i></button>
+                    </div>
+                  </div>
+
+                  <div class="piru-poster-info">
+                    <h3 class="piru-poster-title">Deadpool & Wolverine</h3>
+                    <div class="piru-poster-meta">
+                      <span class="piru-rating"><i class="fa-solid fa-star"></i> 8.2</span>
+                      <span class="piru-year">2024</span>
+                    </div>
+                  </div>
+                </article>
+              </div>
+              <!-- Poster de ejemplo -->
+              <div class="col-6 col-md-4 col-lg-2">
+                <article class="piru-poster">
+                  <div class="piru-poster-media">
+                    <img src="img/p1.webp" alt="Poster" class="piru-poster-img" loading="lazy">
+
+                    <div class="piru-poster-badges">
+                      <span class="piru-badge-quality">4K</span>
+                      <span class="piru-badge-type">Peli</span>
+                    </div>
+
+                    <div class="piru-poster-overlay">
+                      <button class="piru-play-btn"><i class="fa-solid fa-play"></i></button>
+                    </div>
+                  </div>
+
+                  <div class="piru-poster-info">
+                    <h3 class="piru-poster-title">Deadpool & Wolverine</h3>
+                    <div class="piru-poster-meta">
+                      <span class="piru-rating"><i class="fa-solid fa-star"></i> 8.2</span>
+                      <span class="piru-year">2024</span>
+                    </div>
+                  </div>
+                </article>
+              </div>
+              <!-- Poster de ejemplo -->
+              <div class="col-6 col-md-4 col-lg-2">
+                <article class="piru-poster">
+                  <div class="piru-poster-media">
+                    <img src="img/p1.webp" alt="Poster" class="piru-poster-img" loading="lazy">
+
+                    <div class="piru-poster-badges">
+                      <span class="piru-badge-quality">4K</span>
+                      <span class="piru-badge-type">Peli</span>
+                    </div>
+
+                    <div class="piru-poster-overlay">
+                      <button class="piru-play-btn"><i class="fa-solid fa-play"></i></button>
+                    </div>
+                  </div>
+
+                  <div class="piru-poster-info">
+                    <h3 class="piru-poster-title">Deadpool & Wolverine</h3>
+                    <div class="piru-poster-meta">
+                      <span class="piru-rating"><i class="fa-solid fa-star"></i> 8.2</span>
+                      <span class="piru-year">2024</span>
+                    </div>
+                  </div>
+                </article>
+              </div>
+              <!-- Poster de ejemplo -->
+              <div class="col-6 col-md-4 col-lg-2">
+                <article class="piru-poster">
+                  <div class="piru-poster-media">
+                    <img src="img/p1.webp" alt="Poster" class="piru-poster-img" loading="lazy">
+
+                    <div class="piru-poster-badges">
+                      <span class="piru-badge-quality">4K</span>
+                      <span class="piru-badge-type">Peli</span>
+                    </div>
+
+                    <div class="piru-poster-overlay">
+                      <button class="piru-play-btn"><i class="fa-solid fa-play"></i></button>
+                    </div>
+                  </div>
+
+                  <div class="piru-poster-info">
+                    <h3 class="piru-poster-title">Deadpool & Wolverine</h3>
+                    <div class="piru-poster-meta">
+                      <span class="piru-rating"><i class="fa-solid fa-star"></i> 8.2</span>
+                      <span class="piru-year">2024</span>
+                    </div>
+                  </div>
+                </article>
+              </div>
+              <!-- Poster de ejemplo -->
+              <div class="col-6 col-md-4 col-lg-2">
+                <article class="piru-poster">
+                  <div class="piru-poster-media">
+                    <img src="img/p1.webp" alt="Poster" class="piru-poster-img" loading="lazy">
+
+                    <div class="piru-poster-badges">
+                      <span class="piru-badge-quality">4K</span>
+                      <span class="piru-badge-type">Peli</span>
+                    </div>
+
+                    <div class="piru-poster-overlay">
+                      <button class="piru-play-btn"><i class="fa-solid fa-play"></i></button>
+                    </div>
+                  </div>
+
+                  <div class="piru-poster-info">
+                    <h3 class="piru-poster-title">Deadpool & Wolverine</h3>
+                    <div class="piru-poster-meta">
+                      <span class="piru-rating"><i class="fa-solid fa-star"></i> 8.2</span>
+                      <span class="piru-year">2024</span>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </div>
+            <div class="piru-title">
+              <h4>
+                <span class="highlight">Ultimas</span> Series
+              </h4>
+
+              <a href="#" class="piru-link-action">
+                Ver todo <i class="fa-solid fa-chevron-right"></i>
+              </a>
+            </div>
+
+            <div class="row g-3">
+              <!-- Poster de ejemplo -->
+              <div class="col-6 col-md-4 col-lg-2">
+                <article class="piru-poster">
+                  <div class="piru-poster-media">
+                    <img src="img/p1.webp" alt="Poster" class="piru-poster-img" loading="lazy">
+
+                    <div class="piru-poster-badges">
+                      <span class="piru-badge-quality">4K</span>
+                      <span class="piru-badge-type">Peli</span>
+                    </div>
+
+                    <div class="piru-poster-overlay">
+                      <button class="piru-play-btn"><i class="fa-solid fa-play"></i></button>
+                    </div>
+                  </div>
+
+                  <div class="piru-poster-info">
+                    <h3 class="piru-poster-title">Deadpool & Wolverine</h3>
+                    <div class="piru-poster-meta">
+                      <span class="piru-rating"><i class="fa-solid fa-star"></i> 8.2</span>
+                      <span class="piru-year">2024</span>
+                    </div>
+                  </div>
+                </article>
+              </div>
+              <!-- Poster de ejemplo -->
+              <div class="col-6 col-md-4 col-lg-2">
+                <article class="piru-poster">
+                  <div class="piru-poster-media">
+                    <img src="img/p1.webp" alt="Poster" class="piru-poster-img" loading="lazy">
+
+                    <div class="piru-poster-badges">
+                      <span class="piru-badge-quality">4K</span>
+                      <span class="piru-badge-type">Peli</span>
+                    </div>
+
+                    <div class="piru-poster-overlay">
+                      <button class="piru-play-btn"><i class="fa-solid fa-play"></i></button>
+                    </div>
+                  </div>
+
+                  <div class="piru-poster-info">
+                    <h3 class="piru-poster-title">Deadpool & Wolverine</h3>
+                    <div class="piru-poster-meta">
+                      <span class="piru-rating"><i class="fa-solid fa-star"></i> 8.2</span>
+                      <span class="piru-year">2024</span>
+                    </div>
+                  </div>
+                </article>
+              </div>
+              <!-- Poster de ejemplo -->
+              <div class="col-6 col-md-4 col-lg-2">
+                <article class="piru-poster">
+                  <div class="piru-poster-media">
+                    <img src="img/p1.webp" alt="Poster" class="piru-poster-img" loading="lazy">
+
+                    <div class="piru-poster-badges">
+                      <span class="piru-badge-quality">4K</span>
+                      <span class="piru-badge-type">Peli</span>
+                    </div>
+
+                    <div class="piru-poster-overlay">
+                      <button class="piru-play-btn"><i class="fa-solid fa-play"></i></button>
+                    </div>
+                  </div>
+
+                  <div class="piru-poster-info">
+                    <h3 class="piru-poster-title">Deadpool & Wolverine</h3>
+                    <div class="piru-poster-meta">
+                      <span class="piru-rating"><i class="fa-solid fa-star"></i> 8.2</span>
+                      <span class="piru-year">2024</span>
+                    </div>
+                  </div>
+                </article>
+              </div>
+              <!-- Poster de ejemplo -->
+              <div class="col-6 col-md-4 col-lg-2">
+                <article class="piru-poster">
+                  <div class="piru-poster-media">
+                    <img src="img/p1.webp" alt="Poster" class="piru-poster-img" loading="lazy">
+
+                    <div class="piru-poster-badges">
+                      <span class="piru-badge-quality">4K</span>
+                      <span class="piru-badge-type">Peli</span>
+                    </div>
+
+                    <div class="piru-poster-overlay">
+                      <button class="piru-play-btn"><i class="fa-solid fa-play"></i></button>
+                    </div>
+                  </div>
+
+                  <div class="piru-poster-info">
+                    <h3 class="piru-poster-title">Deadpool & Wolverine</h3>
+                    <div class="piru-poster-meta">
+                      <span class="piru-rating"><i class="fa-solid fa-star"></i> 8.2</span>
+                      <span class="piru-year">2024</span>
+                    </div>
+                  </div>
+                </article>
+              </div>
+              <!-- Poster de ejemplo -->
+              <div class="col-6 col-md-4 col-lg-2">
+                <article class="piru-poster">
+                  <div class="piru-poster-media">
+                    <img src="img/p1.webp" alt="Poster" class="piru-poster-img" loading="lazy">
+
+                    <div class="piru-poster-badges">
+                      <span class="piru-badge-quality">4K</span>
+                      <span class="piru-badge-type">Peli</span>
+                    </div>
+
+                    <div class="piru-poster-overlay">
+                      <button class="piru-play-btn"><i class="fa-solid fa-play"></i></button>
+                    </div>
+                  </div>
+
+                  <div class="piru-poster-info">
+                    <h3 class="piru-poster-title">Deadpool & Wolverine</h3>
+                    <div class="piru-poster-meta">
+                      <span class="piru-rating"><i class="fa-solid fa-star"></i> 8.2</span>
+                      <span class="piru-year">2024</span>
+                    </div>
+                  </div>
+                </article>
+              </div>
+              <!-- Poster de ejemplo -->
+              <div class="col-6 col-md-4 col-lg-2">
+                <article class="piru-poster">
+                  <div class="piru-poster-media">
+                    <img src="img/p1.webp" alt="Poster" class="piru-poster-img" loading="lazy">
+
+                    <div class="piru-poster-badges">
+                      <span class="piru-badge-quality">4K</span>
+                      <span class="piru-badge-type">Peli</span>
+                    </div>
+
+                    <div class="piru-poster-overlay">
+                      <button class="piru-play-btn"><i class="fa-solid fa-play"></i></button>
+                    </div>
+                  </div>
+
+                  <div class="piru-poster-info">
+                    <h3 class="piru-poster-title">Deadpool & Wolverine</h3>
+                    <div class="piru-poster-meta">
+                      <span class="piru-rating"><i class="fa-solid fa-star"></i> 8.2</span>
+                      <span class="piru-year">2024</span>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </div>
+
+          </div>
+          <div class="col-lg-4">
+
+            <aside class="piru-sidebar">
+
+              <div class="piru-widget">
+                <h5 class="piru-sidebar-title">Top 5 Películas</h5>
+
+                <div class="piru-ranking-list">
+                  <a href="#" class="piru-ranking-item">
+                    <span class="rank-number number-1">1</span>
+                    <div class="rank-img-wrapper">
+                      <img src="https://image.tmdb.org/t/p/w200/q6y0Go1tsGEsmtFryDOJo3dEmqu.jpg" alt="movie">
+                    </div>
+                    <div class="rank-info">
+                      <h6>Cadena Perpetua</h6>
+                      <span class="rating"><i class="fa-solid fa-star"></i> 9.3</span>
+                    </div>
+                  </a>
+
+                  <a href="#" class="piru-ranking-item">
+                    <span class="rank-number number-2">2</span>
+                    <div class="rank-img-wrapper">
+                      <img src="https://image.tmdb.org/t/p/w200/3bhkrj58Vtu7enYsRolD1fZdja1.jpg" alt="movie">
+                    </div>
+                    <div class="rank-info">
+                      <h6>El Padrino</h6>
+                      <span class="rating"><i class="fa-solid fa-star"></i> 9.2</span>
+                    </div>
+                  </a>
+
+                  <a href="#" class="piru-ranking-item">
+                    <span class="rank-number">3</span>
+                    <div class="rank-img-wrapper">
+                      <img src="https://image.tmdb.org/t/p/w200/ow3wq89wM8qd5X7hWKxiRfsFf9C.jpg" alt="movie">
+                    </div>
+                    <div class="rank-info">
+                      <h6>Pulp Fiction</h6>
+                      <span class="rating"><i class="fa-solid fa-star"></i> 8.9</span>
+                    </div>
+                  </a>
+                </div>
+              </div>
+
+              <div class="piru-widget">
+                <h5 class="piru-sidebar-title">Géneros</h5>
+                <div class="piru-tag-cloud">
+                  <a href="#" class="piru-tag">Acción</a>
+                  <a href="#" class="piru-tag">Aventura</a>
+                  <a href="#" class="piru-tag">Animación</a>
+                  <a href="#" class="piru-tag">Comedia</a>
+                  <a href="#" class="piru-tag">Crimen</a>
+                  <a href="#" class="piru-tag">Sci-Fi</a>
+                </div>
+              </div>
+
+              <div class="piru-widget">
+                <h5 class="piru-sidebar-title">Más Vistas Hoy</h5>
+                <div class="piru-mini-list">
+
+                  <a href="#" class="piru-mini-card">
+                    <img src="img/p1.webp" alt="mini">
+                    <div class="mini-info">
+                      <h6>Barbie</h6>
+                      <small><i class="fa-solid fa-eye"></i> 12.5k vistas</small>
+                    </div>
+                  </a>
+
+                  <a href="#" class="piru-mini-card">
+                    <img src="img/p2.webp" alt="mini">
+                    <div class="mini-info">
+                      <h6>Mario Bros</h6>
+                      <small><i class="fa-solid fa-eye"></i> 10.1k vistas</small>
+                    </div>
+                  </a>
+
+                </div>
+              </div>
+
+              <div class="piru-widget">
+                <h5 class="piru-sidebar-title">Año de estreno</h5>
+                <div class="piru-year-list">
+                  <a href="#" class="year-item">2024</a>
+                  <a href="#" class="year-item">2023</a>
+                  <a href="#" class="year-item">2022</a>
+                  <a href="#" class="year-item">2021</a>
+                </div>
+              </div>
+
+            </aside>
+
+          </div>
+        </div>
+
+      </div>
+
+    </main>
+
+    <footer class="piru-footer">
+      <div class="piru-footer-content">
+        <p>&copy; 2026 PiruFlix. Todos los derechos reservados.</p>
+        <div class="piru-socials">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="js/bootstrap.js"></script>
+  <script src="js/piruflix.js"></script>
+</body>
+
+</html>

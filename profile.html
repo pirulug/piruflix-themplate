@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PiruFlix - Profile</title>
+
+  <link rel="stylesheet" href="css/piruflix.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+  <div class="piru-wrapper">
+
+    <nav class="piru-navbar">
+      <div class="piru-nav-container">
+
+        <div class="piru-brand">
+          <a href="index.html">
+            <img src="https://placehold.co/600x200" alt="PiruFlix Logo">
+          </a>
+        </div>
+
+        <div class="piru-navbar-mobile-controls">
+
+          <button class="piru-mobile-btn" id="mobile-search-trigger">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+
+          <button class="piru-mobile-btn" id="mobile-theme-toggle">
+            <i class="fa-solid fa-moon"></i>
+          </button>
+
+          <button class="piru-mobile-toggle" id="mobile-menu-trigger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+
+        <div class="piru-menu-wrapper" id="piru-menu">
+
+          <button class="piru-close-menu" id="close-menu">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+
+          <ul class="piru-nav">
+            <li class="piru-nav-item">
+              <a class="piru-nav-link active" href="index.html">Inicio</a>
+            </li>
+            <li class="piru-nav-item">
+              <a class="piru-nav-link" href="movie.html">Películas</a>
+            </li>
+            <li class="piru-nav-item">
+              <a class="piru-nav-link" href="serie.html">Series</a>
+            </li>
+            <li class="piru-nav-item">
+              <a class="piru-nav-link" href="mylist.html">Mi Lista</a>
+            </li>
+          </ul>
+
+          <div class="piru-actions">
+
+            <div class="piru-search-group desktop-only">
+              <form action="" method="get">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input class="piru-input" name="search" placeholder="Buscar título...">
+              </form>
+            </div>
+
+            <button class="piru-btn-theme desktop-only" id="desktop-theme-toggle">
+              <i class="fa-solid fa-moon"></i>
+            </button>
+
+            <div class="piru-nav-user">
+              <a href="register.html" class="piru-user-link">
+                <i class="fa-solid fa-user-plus"></i>
+                <span>Registrarse</span>
+              </a>
+              <a href="login.html" class="piru-user-link highlight">
+                <i class="fa-solid fa-right-to-bracket"></i>
+                <span>Ingresar</span>
+              </a>
+              <a href="profile.html" class="piru-user-avatar">
+                <img src="https://ui-avatars.com/api/?name=John+Doe" alt="Perfil">
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="piru-mobile-search-bar" id="mobile-search-bar">
+          <input type="text" placeholder="¿Qué quieres ver hoy?" class="piru-mobile-input">
+          <button class="piru-search-close" id="close-search">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
+        <div class="piru-overlay" id="piru-overlay"></div>
+
+      </div>
+    </nav>
+
+    <main class="piru-main-content">
+      <section class="piru-profile-section">
+        <div class="container py-5">
+
+          <h1 class="piru-section-title mb-4">Configuración de Cuenta</h1>
+
+          <div class="row g-4">
+
+            <div class="col-lg-4">
+              <div class="piru-card profile-identity">
+
+                <div class="avatar-wrapper">
+                  <img src="https://ui-avatars.com/api/?name=John+Doe&background=random&size=200" alt="Avatar"
+                    class="profile-avatar">
+                  <button class="btn-edit-avatar" title="Cambiar Foto">
+                    <i class="fa-solid fa-camera"></i>
+                  </button>
+                </div>
+
+                <h3 class="user-name">John Doe</h3>
+                <p class="user-handle">@johndoe</p>
+
+                <div class="user-stats">
+                  <div class="stat-item">
+                    <span class="value">42</span>
+                    <span class="label">Vistos</span>
+                  </div>
+                  <div class="stat-item">
+                    <span class="value">12</span>
+                    <span class="label">Listas</span>
+                  </div>
+                  <div class="stat-item">
+                    <span class="value">5</span>
+                    <span class="label">Reseñas</span>
+                  </div>
+                </div>
+
+                <hr class="divider">
+
+                <button class="piru-btn piru-btn-outline-danger w-100">
+                  <i class="fa-solid fa-right-from-bracket"></i> Cerrar Sesión
+                </button>
+              </div>
+            </div>
+
+            <div class="col-lg-8">
+
+              <div class="piru-card mb-4">
+                <div class="card-header-flex">
+                  <h4 class="card-title">Información Personal</h4>
+                  <button class="btn-link-action">Editar</button>
+                </div>
+
+                <form class="piru-profile-form">
+                  <div class="row g-3">
+                    <div class="col-md-6">
+                      <div class="piru-form-group">
+                        <label>Nombre Completo</label>
+                        <input type="text" value="John Doe" class="piru-input-clean">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="piru-form-group">
+                        <label>Teléfono</label>
+                        <input type="text" value="+51 999 999 999" class="piru-input-clean">
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="piru-form-group">
+                        <label>Correo Electrónico</label>
+                        <input type="email" value="john.doe@example.com" class="piru-input-clean">
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+
+              <div class="piru-card subscription-card">
+                <div class="sub-icon">
+                  <i class="fa-solid fa-crown"></i>
+                </div>
+                <div class="sub-info">
+                  <h5>PiruFlix Premium</h5>
+                  <p>Próxima facturación: 24 Oct, 2026</p>
+                  <span class="badge-status">Activo</span>
+                </div>
+                <button class="piru-btn piru-btn-glass btn-sm">Gestionar Plan</button>
+              </div>
+
+              <div class="piru-card mt-4">
+                <h4 class="card-title mb-3">Seguridad</h4>
+                <div class="d-flex justify-content-between align-items-center security-row">
+                  <div>
+                    <h6 class="mb-1">Contraseña</h6>
+                    <small class="text-muted">••••••••••••</small>
+                  </div>
+                  <button class="piru-btn piru-btn-secondary btn-sm">Cambiar</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="piru-footer">
+      <div class="piru-footer-content">
+        <p>&copy; 2026 PiruFlix. Todos los derechos reservados.</p>
+        <div class="piru-socials">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="js/bootstrap.js"></script>
+  <script src="js/piruflix.js"></script>
+</body>
+
+</html>

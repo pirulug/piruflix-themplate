@@ -1,0 +1,206 @@
+// =========================================
+// SIDEBAR / ASIDE STYLES
+// =========================================
+.piru-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 40px; // Espacio entre widgets
+  padding-left: 10px; // Separación visual del contenido principal
+}
+
+// 1. Títulos de Widgets (Estilo consistente con el Home)
+.piru-sidebar-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--piru-text);
+  margin-bottom: 20px;
+  padding-left: 12px;
+  position: relative;
+  
+  // Acento vertical (Pill)
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 18px;
+    background-color: var(--piru-accent);
+    border-radius: 4px;
+  }
+}
+
+// 2. Widget: Ranking List (Top 5)
+.piru-ranking-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  .piru-ranking-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    text-decoration: none;
+    padding: 8px;
+    border-radius: 12px;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: var(--piru-surface); // Efecto hover suave
+      
+      .rank-img-wrapper img {
+        transform: scale(1.1); // Pequeño zoom
+      }
+    }
+
+    // Número del ranking
+    .rank-number {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--piru-text);
+      opacity: 0.3; // Grisáceo por defecto
+      width: 25px;
+      text-align: center;
+      line-height: 1;
+
+      // Colores especiales para top 3
+      &.number-1 { color: #FFD700; opacity: 1; text-shadow: 0 0 10px rgba(255, 215, 0, 0.4); } // Oro
+      &.number-2 { color: #C0C0C0; opacity: 1; } // Plata
+      &.number-3 { color: #CD7F32; opacity: 1; } // Bronce
+    }
+
+    // Imagen pequeña
+    .rank-img-wrapper {
+      width: 50px;
+      height: 70px; // Vertical poster ratio
+      border-radius: 6px;
+      overflow: hidden;
+      flex-shrink: 0;
+      
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+      }
+    }
+
+    // Información
+    .rank-info {
+      h6 {
+        margin: 0 0 4px 0;
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: var(--piru-text);
+        // Truncar texto largo
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+
+      .rating {
+        font-size: 0.8rem;
+        color: #ffb400; // Amarillo estrella
+        font-weight: 600;
+        
+        i { margin-right: 2px; }
+      }
+    }
+  }
+}
+
+// 3. Widget: Tag Cloud (Géneros)
+.piru-tag-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  .piru-tag {
+    font-size: 0.8rem;
+    color: var(--piru-text);
+    background-color: var(--piru-surface); // Fondo gris suave
+    padding: 6px 14px;
+    border-radius: 20px; // Pill shape
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+
+    &:hover {
+      background-color: var(--piru-accent); // Rojo al hover
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(229, 9, 20, 0.3);
+    }
+  }
+}
+
+// 4. Widget: Mini Cards (Más Vistas)
+.piru-mini-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.piru-mini-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  group: normal; // Para hover reference
+
+  img {
+    width: 60px;
+    height: 40px; // Formato landscape (miniatura video)
+    border-radius: 6px;
+    object-fit: cover;
+    transition: transform 0.2s;
+  }
+
+  .mini-info {
+    h6 {
+      margin: 0;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--piru-text);
+      transition: color 0.2s;
+    }
+    small {
+      font-size: 0.75rem;
+      color: var(--piru-text);
+      opacity: 0.6;
+    }
+  }
+
+  &:hover {
+    img { transform: scale(1.05); }
+    h6 { color: var(--piru-accent); }
+  }
+}
+
+// 5. Widget: Años (Lista limpia)
+.piru-year-list {
+  display: flex;
+  flex-direction: column;
+  
+  .year-item {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--piru-border-color);
+    color: var(--piru-text);
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    display: flex;
+    justify-content: space-between; 
+    transition: padding 0.2s, color 0.2s;
+
+    &:last-child { border-bottom: none; }
+
+    &:hover {
+      color: var(--piru-accent);
+      padding-left: 5px; 
+    }
+  }
+}

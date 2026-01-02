@@ -1,0 +1,67 @@
+// =========================================
+// MI LISTA (Estilos Específicos)
+// =========================================
+
+// Botón Eliminar (Posicionado dentro del poster)
+.piru-poster {
+  // Aseguramos que el botón se posicione relativo al poster
+  position: relative;
+
+  .piru-btn-remove {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+
+    // Estilo Glassmorphism oscuro
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 5; // Encima del overlay
+    font-size: 0.8rem;
+    transition: all 0.2s ease;
+
+    // Fix para que el icono no interfiera en el click
+    i {
+      pointer-events: none;
+    }
+
+    &:hover {
+      background: var(--piru-accent); // Rojo al hover
+      border-color: var(--piru-accent);
+      transform: scale(1.1);
+    }
+  }
+}
+
+// Estilos del Estado Vacío
+.piru-empty-state {
+  text-align: center;
+  padding: 60px 20px;
+
+  .empty-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    color: var(--piru-text);
+    opacity: 0.2;
+  }
+
+  h3 {
+    font-weight: 700;
+    color: var(--piru-text);
+  }
+
+  p {
+    color: var(--piru-text);
+    opacity: 0.6;
+    margin-bottom: 25px;
+  }
+}

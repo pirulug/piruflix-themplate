@@ -1,0 +1,238 @@
+// =========================================
+// COMPONENTES DE SERIE (Seasons & Episodes)
+// =========================================
+
+// --- 1. Status Badge (En Emisión) ---
+.status-active {
+  color: #46d369; // Verde Netflix
+  border: 1px solid rgba(70, 211, 105, 0.3);
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+// --- 2. Tabs de Temporadas (Horizontal Scroll) ---
+// =========================================
+// TABS DE TEMPORADAS (Bootstrap Override)
+// =========================================
+.piru-season-tabs {
+  display: flex;
+  flex-wrap: nowrap; // Evita que bajen de línea (Scroll horizontal)
+  gap: 20px;
+  overflow-x: auto;
+  padding-bottom: 0; // Ajuste para el borde
+  margin-bottom: 30px;
+  border-bottom: 1px solid var(--piru-border-color);
+
+  // Ocultar barra scroll fea
+  &::-webkit-scrollbar {
+    height: 0;
+    width: 0;
+    display: none;
+  }
+
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  // Estilo de cada botón (Link)
+  .season-tab-link {
+    background: none;
+    border: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--piru-text);
+    opacity: 0.6;
+    padding: 15px 0; // Altura del botón clickeable
+    cursor: pointer;
+    white-space: nowrap; // Texto en una línea
+    position: relative;
+    transition: all 0.3s ease;
+
+    &:hover {
+      opacity: 1;
+      color: var(--piru-text);
+    }
+
+    // CLASE ACTIVE (Agregada por Bootstrap JS)
+    &.active {
+      opacity: 1;
+      color: var(--piru-accent); // Se pone rojo (o tu color acento)
+
+      // Línea roja inferior animada
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -1px; // Pegado a la línea del contenedor padre
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: var(--piru-accent);
+        border-radius: 3px 3px 0 0;
+        animation: tabSlide 0.3s ease;
+      }
+    }
+  }
+}
+
+// Pequeña animación para la línea
+@keyframes tabSlide {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}
+
+// Fade in más suave para el contenido (Opcional, mejora Bootstrap)
+.tab-pane {
+  transition: opacity 0.3s ease;
+}
+
+// --- 3. Lista de Episodios ---
+.piru-episode-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.piru-episode-card {
+  display: flex;
+  align-items: flex-start; // Alinear arriba
+  gap: 20px;
+  padding: 20px;
+  border-radius: 12px;
+  background-color: transparent; // Transparente por defecto
+  border: 1px solid transparent;
+  transition: background-color 0.2s, transform 0.2s;
+  cursor: pointer;
+
+  // Hover Effect: Se ilumina sutilmente como en Apple TV
+  &:hover {
+    background-color: var(--piru-surface);
+    transform: scale(1.01);
+
+    .episode-media {
+      .play-overlay {
+        opacity: 1;
+      }
+
+      img {
+        transform: scale(1.05);
+      }
+    }
+
+    .episode-info .header h6 {
+      color: var(--piru-accent);
+    }
+  }
+
+  // Número del episodio (Izquierda)
+  .episode-index {
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: var(--piru-text);
+    opacity: 0.5;
+    min-width: 30px;
+  }
+
+  // Miniatura (Thumbnail)
+  .episode-media {
+    position: relative;
+    width: 160px; // Tamaño fijo ancho
+    height: 90px; // Ratio 16:9
+    flex-shrink: 0; // No encoger
+    border-radius: 8px;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s;
+    }
+
+    .play-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0; // Oculto hasta hover
+      transition: opacity 0.2s;
+
+      i {
+        font-size: 2rem;
+        color: #fff;
+        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+      }
+    }
+
+    .duration {
+      position: absolute;
+      bottom: 5px;
+      right: 5px;
+      background: rgba(0, 0, 0, 0.7);
+      color: #fff;
+      font-size: 0.7rem;
+      padding: 2px 4px;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+  }
+
+  // Info Texto
+  .episode-info {
+    flex-grow: 1;
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+
+      h6 {
+        font-size: 1rem;
+        font-weight: 700;
+        margin: 0;
+        color: var(--piru-text);
+        transition: color 0.2s;
+      }
+    }
+
+    p {
+      font-size: 0.9rem;
+      color: var(--piru-text);
+      opacity: 0.7;
+      margin: 0;
+      line-height: 1.5;
+
+      // Limitar a 2 líneas
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+  }
+
+  // Responsive Móvil
+  @media (max-width: 768px) {
+    flex-direction: column; // Stack vertical
+    gap: 15px;
+    padding: 15px;
+
+    .episode-index {
+      display: none;
+    }
+
+    // Ocultar número grande en móvil
+
+    .episode-media {
+      width: 100%; // Imagen full width
+      height: auto;
+      aspect-ratio: 16/9;
+    }
+  }
+}

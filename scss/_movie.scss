@@ -1,0 +1,426 @@
+// =========================================
+// PÁGINA DETALLE (Movie Details)
+// =========================================
+
+// --- 1. Header & Backdrop ---
+.piru-detail-header {
+  position: relative;
+  width: 100%;
+  padding-bottom: 40px;
+  // Si quieres que el header ocupe al menos media pantalla
+  min-height: 60vh;
+
+  // Capa de Fondo
+  .piru-backdrop-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.4; // Bajamos opacidad para que se funda con el color de fondo
+    }
+
+    // Degradado para fundir la imagen con el color de fondo
+    .backdrop-gradient {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, var(--piru-bg) 100%);
+      backdrop-filter: blur(5px); // Difuminado leve para centrar atención en contenido
+    }
+  }
+
+  // Enlace Volver
+  .piru-back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--piru-text);
+    opacity: 0.7;
+    font-weight: 500;
+    margin-top: 20px;
+    transition: 0.2s;
+
+    &:hover {
+      opacity: 1;
+      color: var(--piru-accent);
+    }
+  }
+}
+
+// --- 2. Elementos Principales (Poster & Info) ---
+.piru-poster-large {
+  width: 100%;
+  aspect-ratio: 2/3;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3); // Sombra profunda
+  position: relative;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.piru-detail-title {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 15px;
+  line-height: 1.1;
+  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); // Sombra texto para legibilidad
+}
+
+.piru-detail-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 30px;
+  font-size: 1rem;
+  color: var(--piru-text);
+  opacity: 0.9;
+
+  .rating-badge {
+    color: #000;
+    background-color: #ffb400; // Amarillo
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: 700;
+  }
+
+  .meta-item {
+    font-weight: 500;
+
+    &.border-box {
+      border: 1px solid var(--piru-text);
+      padding: 1px 6px;
+      border-radius: 4px;
+      font-size: 0.8rem;
+    }
+
+    &.quality {
+      color: var(--piru-accent);
+      font-weight: 700;
+    }
+  }
+}
+
+// --- 3. Botones y Acciones ---
+.piru-detail-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 40px;
+
+  .piru-btn {
+    padding: 12px 25px;
+    border-radius: 50px; // Pill
+    font-weight: 600;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: transform 0.2s;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    &-primary {
+      background-color: var(--piru-text); // Contraste máximo
+      color: var(--piru-bg);
+
+      &.icon-lg i {
+        font-size: 1.1rem;
+      }
+    }
+
+    &-glass {
+      background: rgba(128, 128, 128, 0.2);
+      backdrop-filter: blur(10px);
+      color: var(--piru-text);
+
+      &:hover {
+        background: rgba(128, 128, 128, 0.3);
+      }
+    }
+  }
+
+  .action-divider {
+    width: 1px;
+    height: 30px;
+    background: var(--piru-border-color);
+    margin: 0 5px;
+  }
+
+  .piru-btn-circle {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 1px solid var(--piru-border-color);
+    background: transparent;
+    color: var(--piru-text);
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: 0.2s;
+
+    &:hover {
+      border-color: var(--piru-text);
+      background: var(--piru-surface);
+    }
+  }
+}
+
+// --- 4. Contenido Texto y Créditos ---
+.piru-subtitle {
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: var(--piru-text);
+}
+
+.piru-text-body {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  opacity: 0.8;
+}
+
+.piru-credits-box {
+  background: var(--piru-surface);
+  padding: 20px;
+  border-radius: 12px;
+
+  .credit-item {
+    margin-bottom: 15px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    small {
+      display: block;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      font-weight: 700;
+      opacity: 0.5;
+      margin-bottom: 4px;
+    }
+
+    span {
+      font-weight: 500;
+    }
+
+    .genre-tags span {
+      display: inline-block;
+      background: rgba(0, 0, 0, 0.1);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      margin-right: 5px;
+    }
+  }
+}
+
+// --- 5. Trailer y Video ---
+.piru-section-title {
+  font-weight: 800;
+  margin-bottom: 20px;
+  padding-left: 15px;
+  border-left: 4px solid var(--piru-accent);
+}
+
+.piru-video-container {
+  width: 100%;
+  aspect-ratio: 21 / 9; // Formato cinemático
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  background: black;
+
+  iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+}
+
+// --- 6. Reseñas (Formulario e Items) ---
+.piru-review-form {
+  background: var(--piru-surface);
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 30px;
+
+  .form-title {
+    font-weight: 700;
+    margin-bottom: 15px;
+  }
+
+  .rating-input-group {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+
+    .star-rating-select {
+      color: #ccc;
+      cursor: pointer;
+      font-size: 1.2rem;
+
+      .active {
+        color: #ffb400;
+      }
+    }
+  }
+
+  .piru-textarea {
+    width: 100%;
+    background: var(--piru-bg); // Fondo diferente para input
+    border: none;
+    border-radius: 8px;
+    padding: 15px;
+    color: var(--piru-text);
+    font-family: inherit;
+    resize: none;
+
+    &:focus {
+      outline: 2px solid var(--piru-surface-hover);
+    }
+  }
+}
+
+.piru-review-item {
+  border-bottom: 1px solid var(--piru-border-color);
+  padding: 20px 0;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  .review-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+
+    .user-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+      }
+
+      h6 {
+        margin: 0;
+        font-weight: 700;
+      }
+
+      small {
+        opacity: 0.6;
+      }
+    }
+
+    .review-score {
+      color: #ffb400;
+      font-weight: 700;
+    }
+  }
+
+  .review-body {
+    margin: 0;
+    opacity: 0.8;
+    padding-left: 50px; // Alinear con texto
+  }
+}
+
+// --- 7. Sidebar Similares ---
+.piru-similar-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  .similar-card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    text-decoration: none;
+    color: var(--piru-text);
+    padding: 10px;
+    border-radius: 12px;
+    transition: background 0.2s;
+
+    &:hover {
+      background: var(--piru-surface);
+
+      .arrow {
+        transform: translateX(5px);
+        color: var(--piru-accent);
+      }
+    }
+
+    img {
+      width: 60px;
+      height: 85px; // Vertical poster ratio
+      border-radius: 8px;
+      object-fit: cover;
+    }
+
+    .info {
+      flex-grow: 1;
+
+      h6 {
+        margin: 0 0 5px 0;
+        font-weight: 700;
+      }
+
+      .meta {
+        font-size: 0.85rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        opacity: 0.7;
+
+        .score {
+          background: var(--piru-surface-hover);
+          padding: 2px 6px;
+          border-radius: 4px;
+          font-weight: 700;
+          color: var(--piru-accent);
+        }
+      }
+    }
+
+    .arrow {
+      font-size: 0.8rem;
+      opacity: 0.5;
+      transition: transform 0.2s;
+    }
+  }
+}
+
+// Media Queries Detalles
+@media (max-width: 768px) {
+  .piru-detail-title {
+    font-size: 2rem;
+  }
+
+  .piru-detail-header .piru-backdrop-layer {
+    // En móvil oscurecemos más el fondo
+    opacity: 0.2;
+  }
+}

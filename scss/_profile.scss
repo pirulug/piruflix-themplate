@@ -1,0 +1,260 @@
+// =========================================
+// PERFIL DE USUARIO
+// =========================================
+
+.piru-profile-section {
+  min-height: 100vh;
+  padding-bottom: 50px;
+}
+
+// 1. Tarjeta Genérica (Base para todo el perfil)
+.piru-card {
+  background: var(--piru-surface);
+  border-radius: 20px;
+  padding: 30px;
+  border: 1px solid var(--piru-border-color);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+
+  .card-title {
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: var(--piru-text);
+  }
+
+  .card-header-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+
+    .btn-link-action {
+      background: none;
+      border: none;
+      color: var(--piru-accent);
+      font-weight: 600;
+      cursor: pointer;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+// 2. Columna Izquierda: Identidad
+.profile-identity {
+  text-align: center;
+
+  .avatar-wrapper {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 20px;
+
+    .profile-avatar {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid var(--piru-bg); // Aro alrededor
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    // Botón flotante cámara
+    .btn-edit-avatar {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      background: var(--piru-accent);
+      border: 3px solid var(--piru-surface);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: transform 0.2s;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  .user-name {
+    font-weight: 800;
+    margin: 0;
+    color: var(--piru-text);
+  }
+
+  .user-handle {
+    color: var(--piru-text);
+    opacity: 0.5;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+  }
+
+  .user-stats {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 25px;
+
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+
+      .value {
+        font-weight: 700;
+        font-size: 1.1rem;
+        color: var(--piru-text);
+      }
+
+      .label {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        opacity: 0.6;
+      }
+    }
+  }
+
+  .divider {
+    border-color: var(--piru-border-color);
+    opacity: 0.5;
+    margin: 20px 0;
+  }
+}
+
+// 3. Inputs Limpios (Clean Style)
+.piru-profile-form {
+  .piru-form-group {
+    margin-bottom: 10px;
+
+    label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--piru-text);
+      opacity: 0.6;
+      margin-bottom: 5px;
+      display: block;
+    }
+
+    .piru-input-clean {
+      width: 100%;
+      background: var(--piru-bg);
+      border: 1px solid transparent; // Invisible hasta focus
+      padding: 10px 15px;
+      border-radius: 10px;
+      color: var(--piru-text);
+      font-weight: 500;
+      transition: all 0.2s;
+
+      &:focus {
+        outline: none;
+        background: var(--piru-bg);
+        border-color: var(--piru-accent);
+        box-shadow: 0 0 0 4px rgba(229, 9, 20, 0.1);
+      }
+
+      // Cuando no tiene foco, parece texto normal
+      &:not(:focus) {
+        background: transparent;
+        padding-left: 0;
+      }
+    }
+  }
+}
+
+// 4. Tarjeta de Suscripción (Gradiente bonito)
+.subscription-card {
+  background: linear-gradient(135deg, #1e1e24 0%, #2a2a35 100%);
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  position: relative;
+  overflow: hidden;
+
+  // Decoración de fondo
+  &::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 150px;
+    height: 150px;
+    background: var(--piru-accent);
+    filter: blur(80px);
+    opacity: 0.2;
+  }
+
+  .sub-icon {
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: #ffd700; // Dorado
+  }
+
+  .sub-info {
+    flex-grow: 1;
+
+    h5 {
+      margin: 0;
+      font-weight: 700;
+    }
+
+    p {
+      margin: 0;
+      font-size: 0.85rem;
+      opacity: 0.7;
+    }
+
+    .badge-status {
+      display: inline-block;
+      background: rgba(70, 211, 105, 0.2);
+      color: #46d369;
+      font-size: 0.7rem;
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-top: 5px;
+      font-weight: 700;
+    }
+  }
+}
+
+// Botones especiales para perfil
+.piru-btn-outline-danger {
+  background: transparent;
+  border: 1px solid #dc3545;
+  color: #dc3545;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.2s;
+
+  &:hover {
+    background: #dc3545;
+    color: white;
+  }
+}
+
+.piru-btn-secondary {
+  background: var(--piru-bg);
+  border: 1px solid var(--piru-border-color);
+  color: var(--piru-text);
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+
+  &:hover {
+    background: var(--piru-border-color);
+  }
+}

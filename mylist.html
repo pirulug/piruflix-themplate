@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PiruFlix</title>
+
+  <link rel="stylesheet" href="css/piruflix.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+
+  <div class="piru-wrapper">
+
+    <nav class="piru-navbar">
+      <div class="piru-nav-container">
+
+        <div class="piru-brand">
+          <a href="index.html">
+            <img src="https://placehold.co/600x200" alt="PiruFlix Logo">
+          </a>
+        </div>
+
+        <div class="piru-navbar-mobile-controls">
+
+          <button class="piru-mobile-btn" id="mobile-search-trigger">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+
+          <button class="piru-mobile-btn" id="mobile-theme-toggle">
+            <i class="fa-solid fa-moon"></i>
+          </button>
+
+          <button class="piru-mobile-toggle" id="mobile-menu-trigger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+
+        <div class="piru-menu-wrapper" id="piru-menu">
+
+          <button class="piru-close-menu" id="close-menu">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+
+          <ul class="piru-nav">
+            <li class="piru-nav-item">
+              <a class="piru-nav-link active" href="index.html">Inicio</a>
+            </li>
+            <li class="piru-nav-item">
+              <a class="piru-nav-link" href="movie.html">Películas</a>
+            </li>
+            <li class="piru-nav-item">
+              <a class="piru-nav-link" href="serie.html">Series</a>
+            </li>
+            <li class="piru-nav-item">
+              <a class="piru-nav-link" href="mylist.html">Mi Lista</a>
+            </li>
+          </ul>
+
+          <div class="piru-actions">
+
+            <div class="piru-search-group desktop-only">
+              <form action="" method="get">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input class="piru-input" name="search" placeholder="Buscar título...">
+              </form>
+            </div>
+
+            <button class="piru-btn-theme desktop-only" id="desktop-theme-toggle">
+              <i class="fa-solid fa-moon"></i>
+            </button>
+
+            <div class="piru-nav-user">
+              <a href="register.html" class="piru-user-link">
+                <i class="fa-solid fa-user-plus"></i>
+                <span>Registrarse</span>
+              </a>
+              <a href="login.html" class="piru-user-link highlight">
+                <i class="fa-solid fa-right-to-bracket"></i>
+                <span>Ingresar</span>
+              </a>
+              <a href="profile.html" class="piru-user-avatar">
+                <img src="https://ui-avatars.com/api/?name=John+Doe" alt="Perfil">
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="piru-mobile-search-bar" id="mobile-search-bar">
+          <input type="text" placeholder="¿Qué quieres ver hoy?" class="piru-mobile-input">
+          <button class="piru-search-close" id="close-search">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
+        <div class="piru-overlay" id="piru-overlay"></div>
+
+      </div>
+    </nav>
+
+    <main class="piru-main-content">
+
+      <div class="container py-5">
+
+        <div class="d-flex align-items-center gap-3 mb-4">
+          <h1 class="piru-section-title mb-0">Mi Lista</h1>
+          <span class="badge rounded-pill bg-secondary bg-opacity-25 text-light" id="list-counter">2 Títulos</span>
+        </div>
+
+        <div class="row g-3" id="my-list-row">
+
+          <div class="col-6 col-sm-4 col-md-3 col-lg-2 piru-list-col">
+            <article class="piru-poster">
+              <div class="piru-poster-media">
+                <img src="img/p1.webp" alt="Ad Astra" class="piru-poster-img">
+
+                <button class="piru-btn-remove" title="Eliminar" onclick="removeItem(this)">
+                  <i class="fa-solid fa-xmark"></i>
+                </button>
+
+                <div class="piru-poster-overlay">
+                  <a href="detail.html" class="piru-play-btn"><i class="fa-solid fa-play"></i></a>
+                </div>
+              </div>
+
+              <div class="piru-poster-info">
+                <h3 class="piru-poster-title">Ad Astra</h3>
+                <div class="piru-poster-meta">
+                  <span class="piru-rating"><i class="fa-solid fa-star"></i> 6.5</span>
+                  <span class="piru-year">2019</span>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="col-6 col-sm-4 col-md-3 col-lg-2 piru-list-col">
+            <article class="piru-poster">
+              <div class="piru-poster-media">
+                <img src="img/p2.webp" alt="Stranger Things" class="piru-poster-img">
+                <button class="piru-btn-remove" title="Eliminar" onclick="removeItem(this)">
+                  <i class="fa-solid fa-xmark"></i>
+                </button>
+                <div class="piru-poster-overlay">
+                  <a href="detail.html" class="piru-play-btn"><i class="fa-solid fa-play"></i></a>
+                </div>
+              </div>
+              <div class="piru-poster-info">
+                <h3 class="piru-poster-title">Stranger Things</h3>
+                <div class="piru-poster-meta">
+                  <span class="piru-rating"><i class="fa-solid fa-star"></i> 8.6</span>
+                  <span class="piru-year">2016</span>
+                </div>
+              </div>
+            </article>
+          </div>
+
+        </div>
+        <div class="piru-empty-state d-none">
+          <div class="empty-icon"><i class="fa-regular fa-bookmark"></i></div>
+          <h3>Tu lista está vacía</h3>
+          <p>Guarda películas y series aquí para verlas más tarde.</p>
+          <a href="index.html" class="piru-btn piru-btn-primary">Explorar Contenido</a>
+        </div>
+
+      </div>
+
+    </main>
+
+    <footer class="piru-footer">
+      <div class="piru-footer-content">
+        <p>&copy; 2026 PiruFlix. Todos los derechos reservados.</p>
+        <div class="piru-socials">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="js/bootstrap.js"></script>
+  <script src="js/piruflix.js"></script>
+</body>
+
+</html>

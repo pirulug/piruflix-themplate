@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PiruFlix</title>
+
+  <link rel="stylesheet" href="css/piruflix.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+
+  <div class="piru-wrapper">
+
+    <nav class="piru-navbar">
+      <div class="piru-nav-container">
+
+        <div class="piru-brand">
+          <a href="index.html">
+            <img src="https://placehold.co/600x200" alt="PiruFlix Logo">
+          </a>
+        </div>
+
+        <div class="piru-navbar-mobile-controls">
+
+          <button class="piru-mobile-btn" id="mobile-search-trigger">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+
+          <button class="piru-mobile-btn" id="mobile-theme-toggle">
+            <i class="fa-solid fa-moon"></i>
+          </button>
+
+          <button class="piru-mobile-toggle" id="mobile-menu-trigger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+
+        <div class="piru-menu-wrapper" id="piru-menu">
+
+          <button class="piru-close-menu" id="close-menu">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+
+          <ul class="piru-nav">
+            <li class="piru-nav-item">
+              <a class="piru-nav-link active" href="index.html">Inicio</a>
+            </li>
+            <li class="piru-nav-item">
+              <a class="piru-nav-link" href="movie.html">Películas</a>
+            </li>
+            <li class="piru-nav-item">
+              <a class="piru-nav-link" href="serie.html">Series</a>
+            </li>
+            <li class="piru-nav-item">
+              <a class="piru-nav-link" href="mylist.html">Mi Lista</a>
+            </li>
+          </ul>
+
+          <div class="piru-actions">
+
+            <div class="piru-search-group desktop-only">
+              <form action="" method="get">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input class="piru-input" name="search" placeholder="Buscar título...">
+              </form>
+            </div>
+
+            <button class="piru-btn-theme desktop-only" id="desktop-theme-toggle">
+              <i class="fa-solid fa-moon"></i>
+            </button>
+
+            <div class="piru-nav-user">
+              <a href="register.html" class="piru-user-link">
+                <i class="fa-solid fa-user-plus"></i>
+                <span>Registrarse</span>
+              </a>
+              <a href="login.html" class="piru-user-link highlight">
+                <i class="fa-solid fa-right-to-bracket"></i>
+                <span>Ingresar</span>
+              </a>
+              <a href="profile.html" class="piru-user-avatar">
+                <img src="https://ui-avatars.com/api/?name=John+Doe" alt="Perfil">
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="piru-mobile-search-bar" id="mobile-search-bar">
+          <input type="text" placeholder="¿Qué quieres ver hoy?" class="piru-mobile-input">
+          <button class="piru-search-close" id="close-search">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
+        <div class="piru-overlay" id="piru-overlay"></div>
+
+      </div>
+    </nav>
+
+    <main class="piru-main-content">
+
+      <div class="piru-detail-wrapper">
+
+        <div class="piru-detail-header">
+          <div class="piru-backdrop-layer">
+            <img src="img/b2.webp" alt="Backdrop Stranger Things">
+            <div class="backdrop-gradient"></div>
+          </div>
+
+          <div class="container position-relative z-2">
+            <a href="index.html" class="piru-back-link">
+              <i class="fa-solid fa-chevron-left"></i> Volver al inicio
+            </a>
+
+            <div class="row mt-4">
+              <div class="col-md-4 col-lg-3 mb-4 mb-md-0">
+                <div class="piru-poster-large">
+                  <img src="img/p2.webp" alt="Poster Stranger Things">
+                </div>
+              </div>
+
+              <div class="col-md-8 col-lg-9 pt-lg-4">
+                <h1 class="piru-detail-title">Stranger Things</h1>
+
+                <div class="piru-detail-meta">
+                  <span class="rating-badge"><i class="fa-solid fa-star"></i> 8.6</span>
+                  <span class="meta-item">2016 - Presente</span>
+                  <span class="meta-item border-box">TV-14</span>
+                  <span class="meta-item status-active">En Emisión</span>
+                  <span class="meta-item">4 Temporadas</span>
+                </div>
+
+                <div class="piru-detail-actions">
+                  <button class="piru-btn piru-btn-primary icon-lg">
+                    <i class="fa-solid fa-play"></i> Continuar Viendo
+                  </button>
+                  <button class="piru-btn piru-btn-glass">
+                    <i class="fa-solid fa-plus"></i> Mi Lista
+                  </button>
+                  <div class="action-divider"></div>
+                  <button class="piru-btn-circle" title="Calificar"><i class="fa-regular fa-thumbs-up"></i></button>
+                  <button class="piru-btn-circle" title="Compartir"><i class="fa-solid fa-share-nodes"></i></button>
+                </div>
+
+                <div class="row mt-5">
+                  <div class="col-lg-8">
+                    <h4 class="piru-subtitle">Sinopsis</h4>
+                    <p class="piru-text-body">
+                      Cuando un niño desaparece, sus amigos, la familia y la policía se ven envueltos en una serie de
+                      eventos misteriosos al tratar de encontrarlo. Su ausencia coincide con el avistamiento de una
+                      criatura terrorífica y la aparición de una extraña niña.
+                    </p>
+                  </div>
+                  <div class="col-lg-4">
+                    <div class="piru-credits-box">
+                      <div class="credit-item">
+                        <small>Creadores</small>
+                        <span>The Duffer Brothers</span>
+                      </div>
+                      <div class="credit-item">
+                        <small>Elenco</small>
+                        <span>Millie Bobby Brown, Finn Wolfhard</span>
+                      </div>
+                      <div class="credit-item">
+                        <small>Géneros</small>
+                        <div class="genre-tags">
+                          <span>Sci-Fi</span>
+                          <span>Terror</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="container py-5">
+          <div class="row">
+
+            <div class="col-lg-8">
+              <h3 class="piru-section-title">Episodios</h3>
+
+              <div class="nav piru-season-tabs" id="season-tab" role="tablist">
+
+                <button class="season-tab-link active" id="tab-s1" data-bs-toggle="tab" data-bs-target="#season-1"
+                  type="button" role="tab" aria-selected="true">
+                  Temporada 1
+                </button>
+
+                <button class="season-tab-link" id="tab-s2" data-bs-toggle="tab" data-bs-target="#season-2"
+                  type="button" role="tab" aria-selected="false">
+                  Temporada 2
+                </button>
+
+                <button class="season-tab-link" id="tab-s3" data-bs-toggle="tab" data-bs-target="#season-3"
+                  type="button" role="tab" aria-selected="false">
+                  Temporada 3
+                </button>
+
+                <button class="season-tab-link" id="tab-s4" data-bs-toggle="tab" data-bs-target="#season-4"
+                  type="button" role="tab" aria-selected="false">
+                  Temporada 4
+                </button>
+
+              </div>
+
+              <div class="tab-content" id="season-tabContent">
+
+                <div class="tab-pane fade show active" id="season-1" role="tabpanel" tabindex="0">
+                  <div class="piru-episode-list">
+
+                    <article class="piru-episode-card">
+                      <div class="episode-index">1</div>
+                      <div class="episode-media">
+                        <img src="https://placehold.co/160x90/222/FFF?text=S1+EP1" alt="Thumbnail">
+                        <div class="play-overlay"><i class="fa-solid fa-circle-play"></i></div>
+                        <span class="duration">48m</span>
+                      </div>
+                      <div class="episode-info">
+                        <div class="header">
+                          <h6>Capítulo uno: La desaparición de Will Byers</h6>
+                        </div>
+                        <p>De camino a casa tras jugar a Dragones y Mazmorras, Will ve algo aterrador.</p>
+                      </div>
+                    </article>
+
+                  </div>
+                </div>
+
+                <div class="tab-pane fade" id="season-2" role="tabpanel" tabindex="0">
+                  <div class="piru-episode-list">
+
+                    <article class="piru-episode-card">
+                      <div class="episode-index">1</div>
+                      <div class="episode-media">
+                        <img src="https://placehold.co/160x90/222/FFF?text=S2+EP1" alt="Thumbnail">
+                        <div class="play-overlay"><i class="fa-solid fa-circle-play"></i></div>
+                        <span class="duration">48m</span>
+                      </div>
+                      <div class="episode-info">
+                        <div class="header">
+                          <h6>Capítulo uno: MADMAX</h6>
+                        </div>
+                        <p>Mientras la ciudad se prepara para Halloween, una rivalidad sacude el salón de árcade.</p>
+                      </div>
+                    </article>
+
+                  </div>
+                </div>
+
+                <div class="tab-pane fade" id="season-3" role="tabpanel" tabindex="0">
+                  <p class="text-white p-3">Episodios de la temporada 3...</p>
+                </div>
+
+                <div class="tab-pane fade" id="season-4" role="tabpanel" tabindex="0">
+                  <p class="text-white p-3">Episodios de la temporada 4...</p>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="col-lg-4 mt-5 mt-lg-0">
+              <div class="ps-lg-4">
+                <h3 class="piru-section-title">Series Similares</h3>
+                <div class="piru-similar-list">
+
+                  <a href="#" class="similar-card">
+                    <img src="https://placehold.co/600x400" alt="Dark">
+                    <div class="info">
+                      <h6>Dark</h6>
+                      <div class="meta">
+                        <small>2017 • Misterio</small>
+                        <span class="score">8.7</span>
+                      </div>
+                    </div>
+                    <i class="fa-solid fa-chevron-right arrow"></i>
+                  </a>
+
+                  <a href="#" class="similar-card">
+                    <img src="https://placehold.co/600x400" alt="Locke & Key">
+                    <div class="info">
+                      <h6>Locke & Key</h6>
+                      <div class="meta">
+                        <small>2020 • Fantasía</small>
+                        <span class="score">7.3</span>
+                      </div>
+                    </div>
+                    <i class="fa-solid fa-chevron-right arrow"></i>
+                  </a>
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+    <footer class="piru-footer">
+      <div class="piru-footer-content">
+        <p>&copy; 2026 PiruFlix. Todos los derechos reservados.</p>
+        <div class="piru-socials">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="js/bootstrap.js"></script>
+  <script src="js/piruflix.js"></script>
+</body>
+
+</html>

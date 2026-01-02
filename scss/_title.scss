@@ -1,0 +1,63 @@
+.piru-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  padding: 0 5px; 
+
+  h4 {
+    position: relative;
+    font-size: 1.5rem;
+    font-weight: 800; 
+    color: var(--piru-text);
+    margin: 0;
+    padding-left: 18px;
+    letter-spacing: -0.5px;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 6px;       
+      height: 24px;     
+      background-color: var(--piru-accent); 
+      border-radius: 10px;
+    }
+
+    // Opcional: si usas <span> dentro del h4
+    .highlight {
+      color: var(--piru-accent);
+    }
+  }
+
+  // 2. Estilo del Enlace "Ver todo"
+  .piru-link-action {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--piru-text);
+    opacity: 0.6; // Por defecto un poco apagado
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+
+    i {
+      font-size: 0.75rem;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    // Hover Effect
+    &:hover {
+      opacity: 1;
+      color: var(--piru-accent);
+      
+      // La flecha se mueve a la derecha
+      i {
+        transform: translateX(4px);
+      }
+    }
+  }
+}
